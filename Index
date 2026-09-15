@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RPG PÂNICO — Especial Halloween 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0a0910;
+    --bg-1: #131019;
+    --bg-2: #1b1622;
+    --bg-3: #241d2c;
+    --line: rgba(232,226,217,0.12);
+    --line-strong: rgba(232,226,217,0.22);
+    --ink: #ece6da;
+    --ink-dim: #a89ea3;
+    --ink-faint: #786e78;
+    --blood: #a4141f;
+    --blood-bright: #d81f2c;
+    --blood-deep: #5c0d14;
+    --moon: #8f7ec4;
+    --moon-dim: #5d5480;
+    --pumpkin: #e07a1f;
+    --pumpkin-dim: #c46418;
+    --paper: #e9e2d0;
+    --ok: #4f9b6a;
+    --font-display: 'Creepster', cursive;
+    --font-type: 'Special Elite', 'Archivo', monospace;
+    --font-body: 'Archivo', -apple-system, sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 600px at 15% -10%, rgba(143,126,196,0.10), transparent 60%),
+      radial-gradient(ellipse 1100px 800px at 110% 10%, rgba(164,20,31,0.14), transparent 55%),
+      radial-gradient(ellipse 1000px 700px at 50% 120%, rgba(164,20,31,0.10), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.6;
+    min-height:100vh;
+    position:relative;
+  }
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:2;
+    opacity:0.05;
+    mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  ::selection{ background:var(--blood); color:var(--paper); }
+
+  a{ color:var(--pumpkin); }
+
+  .wrap{ max-width:980px; margin:0 auto; padding:0 20px 100px; position:relative; z-index:1; }
+
+  /* ---------- HERO / INCOMING CALL ---------- */
+  .hero{
+    padding:38px 0 26px;
+    text-align:center;
+  }
+  .call-card{
+    background:linear-gradient(180deg, var(--bg-2), var(--bg-1));
+    border:1px solid var(--line-strong);
+    border-radius:18px;
+    padding:26px 24px 22px;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.03);
+    position:relative;
+    overflow:hidden;
+  }
+  .call-card::after{
+    content:"";
+    position:absolute; inset:0;
+    background:repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 3px);
+    pointer-events:none;
+  }
+  .call-status{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--font-type);
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    color:var(--blood-bright);
+    text-transform:uppercase;
+  }
+  .call-dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--blood-bright);
+    box-shadow:0 0 0 0 rgba(216,31,44,0.6);
+    animation:pulse 1.6s infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(216,31,44,0.55);}
+    70%{ box-shadow:0 0 0 10px rgba(216,31,44,0);}
+    100%{ box-shadow:0 0 0 0 rgba(216,31,44,0);}
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:400;
+    font-size:clamp(2.6rem, 8vw, 4.6rem);
+    letter-spacing:0.02em;
+    margin:14px 0 2px;
+    color:var(--paper);
+    text-shadow: 0 0 24px rgba(164,20,31,0.55), 0 2px 0 rgba(0,0,0,0.4);
+    line-height:1;
+  }
+  .hero .sub{
+    font-family:var(--font-type);
+    color:var(--moon);
+    font-size:14px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .hero blockquote{
+    font-family:var(--font-type);
+    color:var(--ink-dim);
+    font-size:15px;
+    max-width:520px;
+    margin:0 auto;
+    border-top:1px dashed var(--line-strong);
+    padding-top:14px;
+  }
+  .hero blockquote::before{ content:"“ "; }
+  .hero blockquote::after{ content:" ”"; }
+
+  /* ---------- TABS NAV ---------- */
+  .tabs{
+    position:sticky; top:0; z-index:20;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:2px;
+    background:var(--line);
+    border:1px solid var(--line-strong);
+    border-radius:14px;
+    overflow:hidden;
+    margin:22px 0 30px;
+    backdrop-filter:blur(6px);
+    box-shadow:0 20px 40px -25px rgba(0,0,0,0.9);
+  }
+  .tab-btn{
+    appearance:none; border:none; cursor:pointer;
+    background:var(--bg-1);
+    color:var(--ink-dim);
+    font-family:var(--font-type);
+    font-size:12.5px;
+    letter-spacing:0.03em;
+    padding:14px 8px 12px;
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    transition:background .18s ease, color .18s ease;
+    text-align:center;
+    line-height:1.25;
+  }
+  .tab-btn .ic{ font-size:20px; filter:grayscale(0.4); }
+  .tab-btn .num{
+    font-family:var(--font-display); font-size:11px; color:var(--ink-faint); letter-spacing:0.08em;
+  }
+  .tab-btn:hover{ background:var(--bg-2); color:var(--ink); }
+  .tab-btn.active{
+    background:linear-gradient(180deg, var(--blood-deep), var(--bg-2) 85%);
+    color:var(--paper);
+  }
+  .tab-btn.active .num{ color:var(--pumpkin); }
+
+  .panel{ display:none; animation:fadein .35s ease; }
+  .panel.active{ display:block; }
+  @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  .panel-intro{
+    margin-bottom:26px;
+    padding-bottom:20px;
+    border-bottom:1px solid var(--line);
+  }
+  .panel-intro .eyebrow{
+    font-family:var(--font-type); color:var(--pumpkin); font-size:12.5px; letter-spacing:0.1em;
+  }
+  .panel-intro h2{
+    font-family:var(--font-display); font-weight:400; letter-spacing:0.01em;
+    font-size:clamp(1.7rem, 4vw, 2.3rem); margin:8px 0 10px; color:var(--paper);
+  }
+  .panel-intro p{ color:var(--ink-dim); max-width:640px; font-size:15.5px; }
+
+  /* ---------- CASE FILE CARDS (accordion) ---------- */
+  details.case{
+    background:var(--bg-1);
+    border:1px solid var(--line);
+    border-left:3px solid var(--blood);
+    border-radius:10px;
+    margin-bottom:12px;
+    overflow:hidden;
+  }
+  details.case[open]{ border-left-color:var(--pumpkin); }
+  details.case summary{
+    list-style:none;
+    cursor:pointer;
+    padding:16px 18px;
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    font-family:var(--font-type);
+    font-size:15px;
+    color:var(--paper);
+  }
+  details.case summary::-webkit-details-marker{ display:none; }
+  details.case summary .tag{
+    font-family:var(--font-body); font-weight:600; font-size:10.5px;
+    color:var(--ink-faint); letter-spacing:0.08em; text-transform:uppercase;
+    background:var(--bg-2); border:1px solid var(--line); padding:3px 8px; border-radius:20px;
+    white-space:nowrap;
+  }
+  details.case summary .arrow{
+    color:var(--ink-faint); transition:transform .2s ease; flex-shrink:0;
+  }
+  details.case[open] summary .arrow{ transform:rotate(90deg); color:var(--pumpkin); }
+  .case-body{ padding:0 18px 18px; color:var(--ink-dim); font-size:14.8px; }
+  .case-body p{ margin:0 0 12px; }
+  .case-body ul, .case-body ol{ margin:0 0 12px; padding-left:20px; }
+  .case-body li{ margin-bottom:6px; }
+  .case-body strong{ color:var(--paper); }
+  .case-body h4{ font-family:var(--font-type); color:var(--pumpkin); font-size:13.5px; letter-spacing:0.04em; margin:16px 0 8px; text-transform:uppercase; }
+  .case-body h4:first-child{ margin-top:0; }
+
+  .note{
+    background:var(--bg-2); border:1px dashed var(--line-strong); border-radius:8px;
+    padding:10px 14px; font-size:13.6px; color:var(--ink-dim); margin:12px 0;
+  }
+  .note b{ color:var(--moon); }
+  .note.blood{ border-color:rgba(164,20,31,0.4); }
+  .note.blood b{ color:var(--blood-bright); }
+  .note .lbl{ font-family:var(--font-type); font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:var(--pumpkin); display:block; margin-bottom:4px; }
+
+  table.rule-table{ width:100%; border-collapse:collapse; margin:10px 0 16px; font-size:13.8px; }
+  table.rule-table th, table.rule-table td{ border:1px solid var(--line); padding:8px 10px; text-align:left; }
+  table.rule-table th{ background:var(--bg-2); color:var(--pumpkin); font-family:var(--font-type); font-weight:400; font-size:12px; letter-spacing:0.04em; text-transform:uppercase; }
+  table.rule-table td{ color:var(--ink-dim); }
+  table.rule-table tr:nth-child(even) td{ background:rgba(255,255,255,0.015); }
+
+  .pill-row{ display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 16px; }
+  .pill{
+    font-family:var(--font-type); font-size:11.5px; letter-spacing:0.03em;
+    background:var(--bg-2); border:1px solid var(--line-strong); color:var(--ink);
+    padding:5px 11px; border-radius:20px;
+  }
+
+  .grid-cards{ display:grid; grid-template-columns:repeat(auto-fill, minmax(240px,1fr)); gap:12px; margin:14px 0; }
+  .mini-card{
+    background:var(--bg-2); border:1px solid var(--line); border-radius:10px; padding:14px 16px;
+  }
+  .mini-card h5{ font-family:var(--font-type); color:var(--paper); font-size:14px; margin:0 0 6px; }
+  .mini-card p{ margin:0; font-size:13.4px; color:var(--ink-dim); }
+  .mini-card .cost{ color:var(--pumpkin); font-family:var(--font-type); font-size:12px; }
+
+  /* Attribute badges */
+  .attr-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:14px 0; }
+  .attr-card{ text-align:center; background:var(--bg-2); border:1px solid var(--line-strong); border-radius:10px; padding:16px 10px; }
+  .attr-card .glyph{ font-size:26px; display:block; margin-bottom:6px; }
+  .attr-card h5{ font-family:var(--font-type); color:var(--paper); margin:0 0 4px; font-size:13.5px; letter-spacing:0.03em; text-transform:uppercase; }
+  .attr-card p{ margin:0; font-size:12.4px; color:var(--ink-dim); }
+
+  /* Archetype cards */
+  .arch-card{ background:var(--bg-1); border:1px solid var(--line); border-radius:12px; margin-bottom:14px; overflow:hidden; }
+  .arch-head{ display:flex; align-items:center; gap:12px; padding:14px 18px; background:linear-gradient(90deg, var(--bg-2), transparent); border-bottom:1px solid var(--line); cursor:pointer; }
+  .arch-head .glyph{ font-size:24px; }
+  .arch-head h4{ font-family:var(--font-type); color:var(--paper); margin:0; font-size:16px; }
+  .arch-head .specs{ margin-left:auto; display:flex; gap:6px; }
+  .arch-head .arrow{ color:var(--ink-faint); transition:transform .2s ease; }
+  .arch-card.open .arrow{ transform:rotate(90deg); color:var(--pumpkin); }
+  .arch-desc{ padding:0 18px 12px; color:var(--ink-dim); font-size:13.8px; font-style:italic; }
+  .arch-body{ display:none; padding:6px 18px 18px; }
+  .arch-card.open .arch-body{ display:block; }
+  .ability-row{ padding:10px 0; border-top:1px solid var(--line); }
+  .ability-row:first-child{ border-top:none; }
+  .ability-row .name{ font-family:var(--font-type); color:var(--pumpkin); font-size:13px; letter-spacing:0.02em; }
+  .ability-row p{ margin:4px 0 0; font-size:13.6px; color:var(--ink-dim); }
+
+  /* Threat (ameaça) cards */
+  .threat-card{ background:var(--bg-1); border:1px solid var(--line); border-radius:12px; margin-bottom:14px; overflow:hidden; }
+  .threat-head{ display:flex; align-items:center; gap:12px; padding:14px 18px; cursor:pointer; background:linear-gradient(90deg, rgba(164,20,31,0.14), transparent); }
+  .threat-head .glyph{ font-size:22px; }
+  .threat-head h4{ font-family:var(--font-type); color:var(--paper); margin:0; font-size:15.5px; flex:1; }
+  .threat-head .arrow{ color:var(--ink-faint); transition:transform .2s ease; }
+  .threat-card.open .arrow{ transform:rotate(90deg); color:var(--blood-bright); }
+  .threat-quote{ padding:0 18px 10px; font-size:13px; font-style:italic; color:var(--moon); }
+  .threat-body{ display:none; padding:4px 18px 18px; font-size:13.8px; color:var(--ink-dim); }
+  .threat-card.open .threat-body{ display:block; }
+  .threat-body h4{ font-family:var(--font-type); color:var(--pumpkin); font-size:12px; text-transform:uppercase; letter-spacing:0.06em; margin:12px 0 5px; }
+  .threat-body h4:first-child{ margin-top:0; }
+  .example-killer{ margin-top:12px; padding:10px 12px; background:var(--bg-2); border-radius:8px; border-left:2px solid var(--blood); }
+  .example-killer b{ color:var(--paper); font-family:var(--font-type); font-size:12.6px; }
+
+  /* Dice simulator */
+  .dice-box{
+    background:var(--bg-2); border:1px solid var(--line-strong); border-radius:12px; padding:18px; margin:18px 0 8px;
+  }
+  .dice-box h4{ font-family:var(--font-type); color:var(--pumpkin); margin:0 0 10px; font-size:13.5px; text-transform:uppercase; letter-spacing:0.05em; }
+  .dice-controls{ display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:14px; }
+  .dice-controls input[type=range]{ accent-color:var(--blood-bright); }
+  .dice-controls select{
+    background:var(--bg-1); color:var(--ink); border:1px solid var(--line-strong); border-radius:6px; padding:6px 8px; font-family:var(--font-body);
+  }
+  .btn{
+    font-family:var(--font-type); letter-spacing:0.03em; font-size:13px;
+    background:var(--blood); color:var(--paper); border:none; border-radius:8px;
+    padding:10px 18px; cursor:pointer; transition:background .15s ease, transform .1s ease;
+  }
+  .btn:hover{ background:var(--blood-bright); }
+  .btn:active{ transform:scale(0.97); }
+  .btn.ghost{ background:transparent; border:1px solid var(--line-strong); color:var(--ink); }
+  .btn.ghost:hover{ border-color:var(--pumpkin); color:var(--pumpkin); background:transparent; }
+  .btn.small{ padding:6px 12px; font-size:11.5px; }
+  .dice-result{ display:flex; gap:8px; flex-wrap:wrap; min-height:52px; align-items:center; }
+  .die{
+    width:42px; height:42px; border-radius:9px; display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-type); font-size:18px; background:var(--bg-1); border:2px solid var(--line-strong); color:var(--ink);
+  }
+  .die.success{ border-color:var(--ok); color:var(--ok); box-shadow:0 0 12px rgba(79,155,106,0.35); }
+  .die.fail{ border-color:var(--blood); color:var(--blood-bright); }
+  .dice-summary{ margin-top:10px; font-size:13.4px; color:var(--ink-dim); font-family:var(--font-type); }
+  .dice-summary b{ color:var(--paper); }
+
+  /* Iniciativa list */
+  .order-list{ counter-reset:ord; list-style:none; padding:0; margin:14px 0; }
+  .order-list li{
+    counter-increment:ord; position:relative; padding:10px 14px 10px 44px; margin-bottom:6px;
+    background:var(--bg-2); border-radius:8px; border:1px solid var(--line); font-size:13.8px; color:var(--ink-dim);
+  }
+  .order-list li::before{
+    content:counter(ord); position:absolute; left:12px; top:50%; transform:translateY(-50%);
+    font-family:var(--font-type); color:var(--pumpkin); font-size:14px;
+  }
+  .order-list li b{ color:var(--paper); }
+  .order-list li.enemy{ border-color:rgba(164,20,31,0.4); }
+  .order-list li.enemy::before{ color:var(--blood-bright); }
+
+  footer{ text-align:center; color:var(--ink-faint); font-size:12px; padding:30px 0 10px; font-family:var(--font-type); }
+
+  /* ---------------- SHEET (TAB 4) ---------------- */
+  .sheet-toolbar{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:18px; }
+  .sheet-toolbar .status-msg{ font-size:12.6px; color:var(--ink-faint); font-family:var(--font-type); }
+
+  .sheet{
+    background:
+      radial-gradient(ellipse 700px 300px at 50% 0%, rgba(164,20,31,0.12), transparent 60%),
+      var(--bg-1);
+    border:1px solid var(--line-strong);
+    border-radius:16px;
+    padding:6px;
+  }
+  .sheet-inner{
+    border:1px dashed var(--line-strong);
+    border-radius:12px;
+    padding:26px 22px;
+  }
+  .sheet-title{ text-align:center; margin-bottom:6px; }
+  .sheet-title .callsign{ font-family:var(--font-type); color:var(--blood-bright); font-size:12px; letter-spacing:0.15em; text-transform:uppercase; }
+  .sheet-title h2{ font-family:var(--font-display); font-weight:400; font-size:2.2rem; margin:6px 0 2px; color:var(--paper); }
+  .sheet-title .tagline{ font-family:var(--font-type); font-size:12.5px; color:var(--moon); }
+  .sheet-divider{ text-align:center; color:var(--line-strong); letter-spacing:4px; margin:18px 0; font-size:12px; }
+
+  .sheet-section{ margin-bottom:6px; }
+  .sheet-section .sec-title{
+    display:flex; align-items:center; gap:8px; font-family:var(--font-type); color:var(--pumpkin);
+    font-size:13.5px; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:12px;
+  }
+  .sheet-section .sec-title .line{ flex:1; height:1px; background:var(--line-strong); }
+
+  .field-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:14px; margin-bottom:18px; }
+  .field{ display:flex; flex-direction:column; gap:5px; }
+  .field.full{ grid-column:1/-1; }
+  .field label{ font-family:var(--font-type); font-size:11.5px; letter-spacing:0.05em; color:var(--ink-dim); text-transform:uppercase; }
+  .field input[type=text], .field input[type=number], .field select, .field textarea{
+    background:var(--bg-2); border:1px solid var(--line-strong); border-radius:8px;
+    color:var(--paper); font-family:var(--font-body); font-size:14.5px; padding:9px 11px;
+    width:100%;
+  }
+  .field textarea{ resize:vertical; min-height:70px; line-height:1.5; }
+  .field input:focus, .field select:focus, .field textarea:focus{ outline:none; border-color:var(--pumpkin); background:var(--bg-3); }
+  .field input::placeholder, .field textarea::placeholder{ color:var(--ink-faint); }
+
+  .tracker-block{ margin-bottom:18px; }
+  .tracker-row{ display:flex; align-items:center; gap:14px; margin-bottom:12px; flex-wrap:wrap; }
+  .tracker-row .t-label{ font-family:var(--font-type); font-size:12.5px; color:var(--ink); min-width:150px; text-transform:uppercase; letter-spacing:0.04em; }
+  .dots{ display:flex; gap:6px; flex-wrap:wrap; }
+  .dot{
+    width:22px; height:22px; border-radius:50%; border:2px solid var(--line-strong);
+    cursor:pointer; background:var(--bg-2); transition:all .12s ease;
+  }
+  .dot:hover{ border-color:var(--ink-dim); }
+  .dot.filled-dice{ background:var(--moon); border-color:var(--moon); box-shadow:0 0 8px rgba(143,126,196,0.5); }
+  .dot.filled-wound{ background:var(--blood); border-color:var(--blood-bright); box-shadow:0 0 8px rgba(216,31,44,0.5); }
+  .dot.filled-escape{ background:var(--ok); border-color:var(--ok); box-shadow:0 0 8px rgba(79,155,106,0.5); }
+  .dot.filled-tension{ background:var(--pumpkin); border-color:var(--pumpkin); box-shadow:0 0 8px rgba(224,122,31,0.5); }
+
+  .ability-entries{ display:flex; flex-direction:column; gap:10px; margin-bottom:8px; }
+  .ability-entry{ background:var(--bg-2); border:1px solid var(--line); border-radius:8px; padding:12px; position:relative; }
+  .ability-entry .rm{ position:absolute; top:8px; right:8px; background:none; border:none; color:var(--ink-faint); cursor:pointer; font-size:14px; }
+  .ability-entry .rm:hover{ color:var(--blood-bright); }
+  .inv-entries{ display:flex; flex-direction:column; gap:8px; margin-bottom:8px; }
+  .inv-entry{ display:flex; align-items:center; gap:8px; }
+  .inv-entry input{ flex:1; }
+  .inv-entry .rm{ background:none; border:none; color:var(--ink-faint); cursor:pointer; font-size:16px; }
+  .inv-entry .rm:hover{ color:var(--blood-bright); }
+
+  .status-toggle{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+  .status-opt{
+    font-family:var(--font-type); font-size:12.5px; padding:8px 16px; border-radius:20px; cursor:pointer;
+    border:1px solid var(--line-strong); color:var(--ink-dim); background:var(--bg-2); letter-spacing:0.04em;
+  }
+  .status-opt[data-val="vivo"].active{ background:var(--ok); border-color:var(--ok); color:#08150d; }
+  .status-opt[data-val="ferido"].active{ background:var(--pumpkin); border-color:var(--pumpkin); color:#2a1400; }
+  .status-opt[data-val="morto"].active{ background:var(--blood); border-color:var(--blood-bright); color:var(--paper); }
+
+  .phrase-box{
+    text-align:center; margin:14px 0 4px; padding:18px; border:1px dashed var(--line-strong); border-radius:10px;
+  }
+  .phrase-box input{
+    width:100%; background:transparent; border:none; text-align:center; color:var(--paper);
+    font-family:var(--font-type); font-size:16px; font-style:italic;
+  }
+  .phrase-box input:focus{ outline:none; }
+  .phrase-box input::placeholder{ color:var(--ink-faint); }
+
+  @media print{
+    .tabs, .sheet-toolbar, footer, .hero{ display:none !important; }
+  }
+
+  @media (max-width:640px){
+    .tab-btn{ font-size:10.5px; padding:10px 4px; }
+    .tab-btn .ic{ font-size:17px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="call-card">
+      <span class="call-status"><span class="call-dot"></span> Chamada recebida — número desconhecido</span>
+      <h1>RPG PÂNICO</h1>
+      <div class="sub">Especial Halloween 2026 · Manual do Intérprete</div>
+      <blockquote>Todo mundo tem um segredo. A questão é até onde você iria para protegê-lo.</blockquote>
+    </div>
+  </div>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab-btn active" data-tab="1"><span class="ic">🎃</span><span class="num">Cap. 01</span><span>Como jogar<br>(Sobrevivente)</span></button>
+    <button class="tab-btn" data-tab="2"><span class="ic">🔪</span><span class="num">Cap. 02</span><span>Como jogar<br>(Assassino)</span></button>
+    <button class="tab-btn" data-tab="3"><span class="ic">🩸</span><span class="num">Cap. 03</span><span>Regras &amp;<br>Personagem</span></button>
+    <button class="tab-btn" data-tab="4"><span class="ic">📞</span><span class="num">Cap. 04</span><span>Montar<br>Ficha</span></button>
+  </nav>
+
+  <!-- ============ TAB 1 ============ -->
+  <section class="panel active" id="panel-1">
+    <div class="panel-intro">
+      <span class="eyebrow">Capítulo 01 — Para quem vai sobreviver (ou não)</span>
+      <h2>Como jogar de Sobrevivente</h2>
+      <p>Você é uma Sobrevivente: jovem, imperfeita, e prestes a viver a pior noite da sua vida. Este capítulo explica tudo que você precisa saber para interpretar sua personagem, rolar seus dados e — com muita sorte — chegar viva aos créditos.</p>
+    </div>
+
+    <details class="case" open>
+      <summary><span>O que é uma jogatina de PÂNICO</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <p>Uma sessão é contada em <strong>cenas</strong> — os momentos que constroem a história em conjunto com a Diretora (a pessoa que mestra o jogo). Existem três tipos de cena, e cada uma tem seu próprio jeito de funcionar:</p>
+        <h4>Cenas Livres</h4>
+        <p>Vocês exploram o cenário, conversam, criam teorias, fazem piadas e constroem relações entre as personagens. Não há ordem de ações nem limites — é o momento de aproveitar antes do perigo chegar.</p>
+        <h4>Cenas de Suspense</h4>
+        <p>A tensão aparece. Vocês entram em um covil misterioso, ficam presos numa sala trancada ou tentam decifrar algo antes que seja tarde demais. Aqui existem <strong>Caminhos</strong> para investigar e um mistério (ou fuga) para resolver.</p>
+        <h4>Cenas de Encontro</h4>
+        <p>O confronto direto contra o Assassino. A porta é derrubada, a motosserra liga — e agora é sobreviver seguindo uma ordem de <strong>iniciativa</strong>.</p>
+        <div class="note">
+          <span class="lbl">Como uma cena normalmente flui</span>
+          1. A Diretora descreve o ambiente, as pessoas presentes e os possíveis perigos.<br>
+          2. Cada Intérprete descreve a ação da sua personagem.<br>
+          3. A Diretora narra as consequências e pede um <strong>teste</strong> se houver risco envolvido.
+        </div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>Testes, riscos e sua pilha de dados</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <p>Toda Sobrevivente começa com uma <strong>pilha de 6 dados D6</strong> — sua determinação, sua estabilidade física e mental. Esse é o limite máximo; você nunca pode ter mais que 6 dados comuns.</p>
+        <p>Quando a Diretora pede um <strong>teste</strong> para superar um risco, você anuncia quantos dados da sua pilha vai arriscar e rola todos eles juntos. A dificuldade padrão é <strong>4</strong>: qualquer dado que sair 4, 5 ou 6 é um <strong>Sucesso</strong>. Dados abaixo disso são <strong>Falhas</strong>.</p>
+        <div class="note blood"><span class="lbl">Regra importante</span>Você é obrigado a rolar todos os dados que anunciou, mesmo que já tenha conseguido um sucesso antes de rolar os outros.</div>
+        <table class="rule-table">
+          <tr><th>Tipo de risco</th><th>Sucessos necessários</th><th>Exemplo</th></tr>
+          <tr><td>Risco Comum</td><td>1 sucesso</td><td>Arrombar um armário velho</td></tr>
+          <tr><td>Risco Complexo</td><td>2 sucessos</td><td>Arrombar uma porta reforçada com metal</td></tr>
+        </table>
+        <p>Um <strong>Recurso</strong> (uma arma improvisada, um item do cenário) pode reduzir a dificuldade em 1 ou transformar um Risco Complexo em Comum. Cada recurso tem de 1 a 3 usos.</p>
+        <p>Se você perder o último dado da sua pilha em um teste, a ação vira um <strong>desastre</strong> e sua personagem não pode mais testar nada naquela cena.</p>
+
+        <div class="dice-box">
+          <h4>🎲 Simulador de teste — experimente rolar</h4>
+          <div class="dice-controls">
+            <label style="font-family:var(--font-type); font-size:12.5px;">Dados a arriscar: <b id="diceCountVal">3</b></label>
+            <input type="range" id="diceCount" min="1" max="6" value="3">
+            <select id="riskType">
+              <option value="common">Risco Comum (1 sucesso)</option>
+              <option value="complex">Risco Complexo (2 sucessos)</option>
+            </select>
+            <button class="btn" id="rollBtn">Rolar dados</button>
+          </div>
+          <div class="dice-result" id="diceResult"></div>
+          <div class="dice-summary" id="diceSummary">Escolha quantos dados arriscar e role para ver se supera o risco.</div>
+        </div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>Perdendo dados: sacrificados vs. descartados</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <p>Falhar custa caro. Todo dado que resulta em falha sai da sua pilha de uma destas duas formas:</p>
+        <div class="grid-cards">
+          <div class="mini-card"><h5>Dados Sacrificados</h5><p>Em Cenas Livres e de Suspense, dados de falha vão direto para a pilha da <strong>Diretora</strong> — alimentando o Assassino.</p></div>
+          <div class="mini-card"><h5>Dados Descartados</h5><p>Em Encontros e Testes de Susto, dados de falha vão para a <strong>pilha de descarte</strong> no centro da mesa, sem dono.</p></div>
+        </div>
+        <h4>Teste de Susto</h4>
+        <p>Quando algo assusta o grupo (um cadáver, um barulho, um trovão), a Diretora pede um Teste de Susto: role <strong>1 dado</strong> como se fosse um Risco Comum. Se falhar, descarte o dado.</p>
+        <h4>Dados Marcadores</h4>
+        <p>Diferente dos dados comuns, <strong>Dados Marcadores</strong> representam condições que evoluem — feridas, infecções, possessões. Eles não contam para sua pilha normal e não podem ser usados em testes. Quanto maior o número na face, mais grave a condição.</p>
+        <table class="rule-table">
+          <tr><th>Condição</th><th>Como funciona</th></tr>
+          <tr><td><strong>Ferida</strong></td><td>Some os valores se receber mais de uma. Chegar a 6 = morte. Pode ser tratada com a vantagem "Cuidar de Feridas".</td></tr>
+          <tr><td><strong>Sequela</strong></td><td>Ferimento profundo (osso quebrado, corte grave). Acumula até 5 e você nunca pode curar Feridas abaixo do número de Sequelas.</td></tr>
+        </table>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>Recuperando dados</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <p>Existem duas formas oficiais de recuperar dados perdidos de volta para sua pilha, sempre pescando da pilha de descarte:</p>
+        <div class="grid-cards">
+          <div class="mini-card"><h5>Choque de Realidade</h5><p class="cost">6 Pontos de Tensão</p><p>Compre um dado comum a mais para sua pilha, gastando Pontos de Tensão.</p></div>
+          <div class="mini-card"><h5>Recuperar o Fôlego</h5><p class="cost">Sua ação no Encontro</p><p>Durante um Encontro, gaste sua ação para descrever uma pausa tática e ganhar +1 dado comum.</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>Pontos de Tensão e Vantagens</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <p>Pontos de Tensão (PT) são a "moeda" que você gasta para comprar Vantagens durante a jogatina. Você começa com <strong>0</strong> e pode acumular até <strong>10</strong>.</p>
+        <p>Você ganha PT arriscando sua Sobrevivente de maneiras clichês de filme de terror: investigar o barulho suspeito, atender aquela ligação à meia-noite, fazer uma piada icônica que faz a mesa inteira rir, ou interpretar muito bem um momento de tensão. Combine com sua Diretora quais desafios valem pontos na sua mesa.</p>
+        <h4>Vantagens gerais (fora de um Encontro)</h4>
+        <div class="grid-cards">
+          <div class="mini-card"><h5>Cuidar de Feridas</h5><p class="cost">Custo variável</p><p>Gaste quantos PT quiser para reduzir suas Feridas (ou de um aliado) no mesmo valor. Nunca cura abaixo do valor de Sequela. Uma vez por Encontro.</p></div>
+          <div class="mini-card"><h5>Tomar Jeito</h5><p class="cost">3 PT</p><p>Recupere uma especialidade sua ou de outra Sobrevivente que tenha sido incapacitada.</p></div>
+          <div class="mini-card"><h5>Choque de Realidade</h5><p class="cost">6 PT</p><p>Compre um dado comum a mais para sua pilha.</p></div>
+        </div>
+        <h4>Vantagens de especialidade</h4>
+        <p>Só podem ser compradas por quem tem especialidade no atributo indicado:</p>
+        <div class="grid-cards">
+          <div class="mini-card"><h5>Adrenalina <span class="cost">(Vigor · 2 PT)</span></h5><p>Reduza sua próxima ferida em 1 automaticamente. Uma vez por Encontro.</p></div>
+          <div class="mini-card"><h5>Caçar Recursos <span class="cost">(Astúcia · 3 PT)</span></h5><p>Receba um Recurso novo na cena ou com sua personagem.</p></div>
+          <div class="mini-card"><h5>Preparar para a Próxima <span class="cost">(Agilidade · 3 PT)</span></h5><p>Garanta um Dado de Fuga extra no próximo teste de Vazar Dali. Uma vez por Encontro.</p></div>
+          <div class="mini-card"><h5>Ele Não Espera por Mim <span class="cost">(Força · 3 PT)</span></h5><p>Garanta um sucesso automático no próximo Partir para Cima. Uma vez por Encontro.</p></div>
+          <div class="mini-card"><h5>Ombro Amigo <span class="cost">(Carisma · variável)</span></h5><p>Doe uma quantia de PT para outra Sobrevivente. Uma vez por Encontro.</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>Apegos: o que sua personagem tem a perder</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <p>Toda Sobrevivente carrega três Apegos que a conectam ao mundo — e rendem Pontos de Tensão quando aparecem em cena:</p>
+        <table class="rule-table">
+          <tr><th>Apego</th><th>Exemplo</th><th>Recompensa</th></tr>
+          <tr><td><strong>Item Icônico</strong></td><td>Uma moeda da sorte, um estojo de maquiagem, uma bola de basquete</td><td>1 PT ao trazê-lo numa cena</td></tr>
+          <tr><td><strong>Relação Afetiva</strong></td><td>Uma amizade, um namoro, um familiar, um pet</td><td>2 PT ao vivenciar um momento com essa pessoa</td></tr>
+          <tr><td><strong>Desejo Obscuro</strong></td><td>Uma vontade que prefere manter em segredo</td><td>3 PT ao revelar parte dele em cena</td></tr>
+        </table>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>O Encontro: cara a cara com o Assassino</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <p>O Assassino pode aparecer assim que tiver mais dados que qualquer pessoa na mesa. A partir daí, todos seguem uma ordem de <strong>iniciativa</strong> — os jogadores agem primeiro, na ordem definida pelo arquétipo:</p>
+        <ol class="order-list">
+          <li><b>Herói</b> — veio salvar o dia</li>
+          <li><b>Atleta</b> — ele é forte, ok?</li>
+          <li><b>Valentona</b> — ninguém mexe com ele</li>
+          <li><b>Esbelto</b> — bonito demais pra morrer</li>
+          <li><b>Inocente</b> — alguém ajuda ele antes!</li>
+          <li><b>Nerd</b> — não é muito de briga</li>
+          <li><b>Relaxado</b> — Uh? Quê?</li>
+          <li><b>Cética</b> — isso não está acontecendo</li>
+          <li class="enemy"><b>Assassino</b></li>
+        </ol>
+        <h4>Etapas de Fuga</h4>
+        <p>Para escapar com vida, você precisa acumular na sua pilha um número de <strong>Dados de Fuga</strong> igual às Etapas de Fuga do Encontro — um valor secreto que a Diretora define de acordo com a ameaça e o ambiente.</p>
+        <h4>Suas ações durante o Encontro</h4>
+        <div class="grid-cards">
+          <div class="mini-card"><h5>Vazar Dali</h5><p>Teste de Agilidade. Cada sucesso vira um Dado de Fuga. Tirar 6 conta como <strong>Fuga Vantajosa</strong> — dois Dados de Fuga de uma vez.</p></div>
+          <div class="mini-card"><h5>Recuperar o Fôlego</h5><p>Gaste sua ação para ganhar +1 dado comum na pilha.</p></div>
+          <div class="mini-card"><h5>Partir para Cima</h5><p>Teste de Força. Em caso de sucesso, o Assassino descarta 1 dado, não importa quantos sucessos você tirou.</p></div>
+          <div class="mini-card"><h5>Arriscar Tudo</h5><p>Descarte todos os seus dados para fugir automaticamente. Só uma vez por sessão e nunca sendo a última pessoa no Encontro.</p></div>
+          <div class="mini-card"><h5>Ajudar Alguém</h5><p>Teste de um atributo à escolha. Todo sucesso é doado a outra Sobrevivente. As falhas não são descartadas.</p></div>
+          <div class="mini-card"><h5>Distrair</h5><p>Teste complexo de Astúcia. Em sucesso, o Assassino gasta +1 dado extra se usar Matar neste turno.</p></div>
+        </div>
+        <div class="note"><span class="lbl">Dica de mesa</span>Se sua ideia não combina com a especialidade "óbvia" da ação, negocie com a Diretora — um Distrair usando Agilidade ao atirar, ou um Partir para Cima usando Carisma para tentar seduzir o Assassino, podem fazer sentido narrativamente.</div>
+        <h4>Derrotando o Assassino</h4>
+        <p>Se o grupo zerar a pilha de dados da Diretora, o Assassino é derrotado momentaneamente e vocês ganham uma <strong>Pista</strong> — uma fraqueza dele que funciona como um recurso ilimitado compartilhado pelo grupo.</p>
+        <div class="note blood"><span class="lbl">Fim de uma Cena de Encontro</span>Ela termina quando: o Assassino abandona a cena, o Assassino fica sem dados, todo mundo escapa, ou a última Sobrevivente morre.</div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ TAB 2 ============ -->
+  <section class="panel" id="panel-2">
+    <div class="panel-intro">
+      <span class="eyebrow">Capítulo 02 — Para quem está do outro lado da linha</span>
+      <h2>Como jogar de Assassino (Diretora)</h2>
+      <p>Você não joga uma personagem: você é a força por trás da carnificina. Este capítulo ensina a montar um Assassino, administrar seus recursos e conduzir Cenas de Suspense e Encontros inesquecíveis.</p>
+    </div>
+
+    <details class="case" open>
+      <summary><span>A anatomia de um Assassino</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <p>Todo Assassino nasce de duas <strong>Ameaças</strong> — descritores baseados em clichês clássicos do slasher que definem quase tudo sobre ele, mecânica e narrativamente. Escolha a favorita como sua <strong>Ameaça Principal</strong>.</p>
+        <div class="pill-row">
+          <span class="pill">Pontos de Horror (PH)</span>
+          <span class="pill">Nível de Brutalidade (NB)</span>
+          <span class="pill">Ações Gerais</span>
+          <span class="pill">Ações Únicas</span>
+          <span class="pill">Poder Passivo</span>
+          <span class="pill">Poder Especial</span>
+        </div>
+        <div class="note blood"><span class="lbl">Segredo de mesa</span>O Nível de Brutalidade e as duas Ameaças do seu Assassino devem ficar em segredo dos Intérpretes — eles ainda não sabem contra o que vão lutar.</div>
+        <h4>Montando um Assassino rapidamente</h4>
+        <ol>
+          <li>Escolha suas duas Ameaças e some seus Níveis de Brutalidade para obter seus dados iniciais.</li>
+          <li>Escolha 1 Ação Única de cada Ameaça.</li>
+          <li>Escolha 1 Poder Passivo (vem da Ameaça Principal).</li>
+          <li>Escolha 1 Poder Especial, livremente.</li>
+        </ol>
+        <table class="rule-table">
+          <tr><th>Nível de Brutalidade</th><th>Dados iniciais</th><th>Testes de Susto / Encontro</th><th>Armadilhas grátis / Suspense</th></tr>
+          <tr><td>2</td><td>2</td><td>5</td><td>5</td></tr>
+          <tr><td>3</td><td>3</td><td>4</td><td>4</td></tr>
+          <tr><td>4</td><td>4</td><td>3</td><td>3</td></tr>
+          <tr><td>5</td><td>5</td><td>2</td><td>2</td></tr>
+          <tr><td>6</td><td>6</td><td>1</td><td>1</td></tr>
+        </table>
+        <div class="note"><b>Etapa de Fuga base</b> = maior NB entre as duas Ameaças + 1 &nbsp;·&nbsp; <b>PH inicial</b> = NB da Ameaça Principal</div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>Pontos de Horror e Intentos Horríveis</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <p>Pontos de Horror (PH) são o seu saldo para gastar em ações e habilidades especiais. Você recupera PH completando <strong>Intentos Horríveis</strong> — situações que recompensam o terror que você causa.</p>
+        <table class="rule-table">
+          <tr><th>PH</th><th>Intento Horrível</th></tr>
+          <tr><td>5</td><td>Uma Sobrevivente morre durante uma Cena de Suspense</td></tr>
+          <tr><td>4</td><td>Todas as Sobreviventes tentam escapar no primeiro turno de um Encontro</td></tr>
+          <tr><td>2</td><td>Uma Sobrevivente cai em uma armadilha</td></tr>
+          <tr><td>1</td><td>Pelo menos uma Sobrevivente falha em um Teste de Susto</td></tr>
+          <tr><td>1</td><td>Um Intérprete usa a vantagem Choque de Realidade</td></tr>
+          <tr><td>1</td><td>Cada Sobrevivente que saiu ferida de um Encontro</td></tr>
+          <tr><td>1</td><td>Uma Sobrevivente morre durante um Encontro</td></tr>
+          <tr><td>1</td><td>Sobreviventes se beijam</td></tr>
+        </table>
+        <p>Cada Ameaça também tem seu próprio <strong>Intento Único</strong> — veja a lista de Ameaças abaixo.</p>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>Ações Gerais (todo Assassino tem acesso)</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <div class="grid-cards">
+          <div class="mini-card"><h5>Assustar</h5><p>Force um Teste de Susto. Você pode assustar (7 − seu Nível de Brutalidade) vezes por Encontro.</p></div>
+          <div class="mini-card"><h5>Matar</h5><p>Durante um Encontro, mate qualquer Sobrevivente com menos dados que você, descartando 2 dos seus dados.</p></div>
+          <div class="mini-card"><h5>Ferir</h5><p>Role 1 dado. Em 6, morte instantânea. Se menor, entregue como Dado Marcador de ferida (soma se já houver outra).</p></div>
+          <div class="mini-card"><h5>Mutilar</h5><p>Ao tirar 6 em um Ferir, descarte o dado e dê 3 Sequelas ao invés de matar. Ganhe 4 PH.</p></div>
+          <div class="mini-card"><h5>Escapar</h5><p>Retire-se da cena, encerrando o confronto, e ganhe 1 dado.</p></div>
+          <div class="mini-card"><h5>Dificultar</h5><p class="cost">4 PH por dado</p><p>No início de um Encontro, aumente as Etapas de Fuga em 1.</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>Ações Únicas (escolha 2, uma de cada Ameaça)</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <div class="grid-cards">
+          <div class="mini-card"><h5>Acidentar <span class="cost">4 PH</span></h5><p>Ao usar susto fora de encontro, use Ferir em quem falhou.</p></div>
+          <div class="mini-card"><h5>Amaldiçoar <span class="cost">3 PH</span></h5><p>Insira secretamente um Dado Marcador oculto num recurso recém-encontrado; evolui a cada uso.</p></div>
+          <div class="mini-card"><h5>Destruir <span class="cost">4 PH</span></h5><p>Destrua um recurso ou qualidade favorável ao ferir alguém (grátis em Cena de Suspense).</p></div>
+          <div class="mini-card"><h5>Devorar</h5><p>Ao alguém tirar 6, anuncie Devorar e ganhe 1 PH pelo sucesso alheio (ela mantém o sucesso).</p></div>
+          <div class="mini-card"><h5>Incapacitar <span class="cost">4 PH</span></h5><p>Ao ferir alguém, desmarque uma especialidade dela até ser recuperada com Tomar Jeito.</p></div>
+          <div class="mini-card"><h5>Infectar <span class="cost">4 PH</span></h5><p>Entregue um Dado Marcador de infecção que evolui a cada cena e piora em estágios até a morte.</p></div>
+          <div class="mini-card"><h5>Possuir</h5><p>Dado Marcador que sobe a cada falha da vítima; ao chegar em 6, você a usa para Matar alguém.</p></div>
+          <div class="mini-card"><h5>Restringir</h5><p>Dado Marcador (começa em 3) aumenta a dificuldade dos testes da vítima em +1 até ser removido.</p></div>
+          <div class="mini-card"><h5>Segurar <span class="cost">5 PH</span></h5><p>Ao ferir sem matar, imobilize a vítima — ela não conta Dados de Fuga e piora a cada turno.</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>Poderes Especiais (escolha 1, livremente)</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <div class="grid-cards">
+          <div class="mini-card"><h5>Você Já Sofreu o Suficiente <span class="cost">2 PH</span></h5><p>Ao matar alguém com menos de 3 dados, descarte só 1 dos seus.</p></div>
+          <div class="mini-card"><h5>Eu Vejo Cada Passo Seu <span class="cost">2 PH</span></h5><p>Ao presenciar um fracasso, obrigue a Sobrevivente a te sacrificar um dado.</p></div>
+          <div class="mini-card"><h5>Banho de Sangue <span class="cost">2 PH por Intérprete</span></h5><p>Na 1ª morte de um Encontro, descarte 1 dado de todas as Sobreviventes vivas.</p></div>
+          <div class="mini-card"><h5>Corte Profundo <span class="cost">2 PH</span></h5><p>Ao ferir, +1 no valor do dado marcador de ferida.</p></div>
+          <div class="mini-card"><h5>Jumpscare <span class="cost">2 PH</span></h5><p>Ao começar um Encontro, force Teste de Susto em todos sem gastar os seus usos.</p></div>
+          <div class="mini-card"><h5>Trauma <span class="cost">3 PH</span></h5><p>Ao Escapar, incapacite todas as especialidades de uma Sobrevivente ativa.</p></div>
+          <div class="mini-card"><h5>Isso Vai Deixar Marca <span class="cost">4 PH</span></h5><p>Ao ferir, adicione +1 Sequela extra. Uma vez por Encontro.</p></div>
+          <div class="mini-card"><h5>Ataque do Coração <span class="cost">3 PH</span></h5><p>Antes de um Teste de Susto, todas as falhas são sacrificadas a você.</p></div>
+          <div class="mini-card"><h5>Surpresa! <span class="cost">6 PH</span></h5><p>Mova sua iniciativa para primeiro lugar (sem usar Matar nesse turno).</p></div>
+          <div class="mini-card"><h5>Eu Voltarei <span class="cost">3 PH</span></h5><p>Use Escapar fora do seu turno, entre turnos das Sobreviventes.</p></div>
+          <div class="mini-card"><h5>Sua Hora Chegou <span class="cost">3 PH</span></h5><p>Ao iniciar um Encontro, +1 em qualquer Dado Marcador da mesa (exceto Ferir).</p></div>
+          <div class="mini-card"><h5>Não Há Saída <span class="cost">4 PH</span></h5><p>Transforme um Dado de Fuga de volta em comum, trazendo alguém de volta ao Encontro.</p></div>
+          <div class="mini-card"><h5>Cansei de Brincar <span class="cost">5 PH</span></h5><p>Transforme um Caminho Armadilha em Caminho Mortal.</p></div>
+          <div class="mini-card"><h5>Mudança de Planos <span class="cost">5 PH</span></h5><p>Ao fim de um Encontro, troque uma Ação Única por outra da mesma Ameaça.</p></div>
+          <div class="mini-card"><h5>Fim da Esperança <span class="cost">5 PH</span></h5><p>Ao iniciar uma Cena de Suspense, mantenha um Passo oculto na 1ª rodada.</p></div>
+          <div class="mini-card"><h5>Caiam na Teia <span class="cost">5 PH</span></h5><p>Ative uma qualidade negativa no cenário. Uma vez por sessão.</p></div>
+          <div class="mini-card"><h5>Indiferença Perturbadora <span class="cost">2 PH</span></h5><p>Ignore os efeitos de uma qualidade neutra por um turno.</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>Tipos de Ameaças (escolha 2 para montar seu Assassino)</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <p>Toque em cada Ameaça para ver Passiva, Ações Únicas, Intento Único e um exemplo de Assassino clássico construído com ela.</p>
+
+        <div class="threat-card">
+          <div class="threat-head"><span class="glyph">⛓️</span><h4>Amaldiçoado</h4><span class="arrow">▶</span></div>
+          <div class="threat-quote">Sofre de uma maldição ou flagelo que o alimenta com ódio e sede de sangue.</div>
+          <div class="threat-body">
+            <h4>Passiva</h4><p>Dados marcadores, exceto ferida, começam com +1 em seu valor.</p>
+            <h4>Ações Únicas</h4><p>Possuir, Amaldiçoar, Infectar, Acidentar.</p>
+            <h4>Intento Único</h4><p>+2 PH ao colocar um Dado Marcador em uma Sobrevivente.</p>
+            <div class="example-killer"><b>O Imortal</b> (Amaldiçoado + Obstinado) — homem de conhecimento milenar, amaldiçoado a viver na terra até o fim, carregando o peso de crimes antigos. Combo: Amaldiçoar + Restringir + Você Já Sofreu o Suficiente.</div>
+          </div>
+        </div>
+
+        <div class="threat-card">
+          <div class="threat-head"><span class="glyph">👻</span><h4>Assombração</h4><span class="arrow">▶</span></div>
+          <div class="threat-quote">Transcende os limites do plano físico, caminhando entre o mundo dos mortos e dos vivos.</div>
+          <div class="threat-body">
+            <h4>Passiva</h4><p>Se a Sobrevivente falhar em um Teste de Susto carregando um Recurso, ele se torna inutilizável.</p>
+            <h4>Ações Únicas</h4><p>Possuir, Amaldiçoar, Acidentar, Incapacitar.</p>
+            <h4>Intento Único</h4><p>PH igual ao número de Sobreviventes que falharem em um Teste de Susto.</p>
+            <div class="example-killer"><b>A Sangria</b> (Assombração + Amaldiçoado) — repita seu nome três vezes no espelho para ver a figura horripilante no reflexo rachado. Combo: Acidentar + Possuir + Jumpscare.</div>
+          </div>
+        </div>
+
+        <div class="threat-card">
+          <div class="threat-head"><span class="glyph">🪓</span><h4>Brutamontes</h4><span class="arrow">▶</span></div>
+          <div class="threat-quote">Grande, forte e resistente. Se você ouve os passos pesados, já é tarde demais.</div>
+          <div class="threat-body">
+            <h4>Passiva</h4><p>Ao ferir alguém que já tem Sequela, o valor da Ferida recebe +1.</p>
+            <h4>Ações Únicas</h4><p>Segurar, Incapacitar, Destruir.</p>
+            <h4>Intento Único</h4><p>+2 PH toda vez que os Intérpretes falharem em Partir para Cima.</p>
+            <div class="example-killer"><b>O Bruto</b> (Brutamontes + Carniceira) — gigante quase cego, isolado em sua mansão, que usa o martelo enferrujado do pai. Combo: Incapacitar + Segurar + Banho de Sangue.</div>
+          </div>
+        </div>
+
+        <div class="threat-card">
+          <div class="threat-head"><span class="glyph">🩸</span><h4>Carniceira</h4><span class="arrow">▶</span></div>
+          <div class="threat-quote">Agressiva e sanguinária, dona de um prazer que só um banho de sangue poderia fornecer.</div>
+          <div class="threat-body">
+            <h4>Passiva</h4><p>Ao escapar de um Encontro, ganhe 1 dado extra para cada Sobrevivente com ferimento maior que 3.</p>
+            <h4>Ações Únicas</h4><p>Devorar, Segurar, Acidentar.</p>
+            <h4>Intento Único</h4><p>+1 PH toda vez que usarem a vantagem Cuidar de Feridas.</p>
+            <div class="example-killer"><b>A Brutalizada</b> (Carniceira + Brutamontes) — quebrada pelo terror de ser perseguida, ela virou uma das criaturas. Combo: Devorar + Segurar + Isso Vai Deixar Marca.</div>
+          </div>
+        </div>
+
+        <div class="threat-card">
+          <div class="threat-head"><span class="glyph">🐙</span><h4>Desconhecida</h4><span class="arrow">▶</span></div>
+          <div class="threat-quote">Vem de outro lugar — outro planeta, dimensão, ou o fundo do oceano. Suas formas são incompreensíveis.</div>
+          <div class="threat-body">
+            <h4>Passiva</h4><p>Partir para Cima contra você sempre se torna um Risco Complexo.</p>
+            <h4>Ações Únicas</h4><p>Possuir, Infectar, Devorar, Acidentar, Restringir.</p>
+            <h4>Intento Único</h4><p>+3 PH quando uma Sobrevivente prejudicar ativamente outra.</p>
+            <div class="example-killer"><b>A Prole</b> (Desconhecida + Mestre) — uma entidade que aos poucos coloca suas patas no nosso mundo, trazendo pequenas criaturas rastejantes. Combo: Acidentar + Infectar + Caiam na Teia.</div>
+          </div>
+        </div>
+
+        <div class="threat-card">
+          <div class="threat-head"><span class="glyph">🌀</span><h4>Descontrolada</h4><span class="arrow">▶</span></div>
+          <div class="threat-quote">Sequer sabe o que almeja, mas segue com determinação desgovernada, movida por instintos primitivos.</div>
+          <div class="threat-body">
+            <h4>Passiva</h4><p>Ao ferir cada Sobrevivente pela primeira vez na sessão, +1 no marcador de ferimento.</p>
+            <h4>Ações Únicas</h4><p>Segurar, Destruir, Devorar.</p>
+            <h4>Intento Único</h4><p>+1 PH por Sobrevivente que entrar num Encontro com 3 dados ou menos.</p>
+            <div class="example-killer"><b>A Besta</b> (Descontrolada + Carniceira) — o urro ensurdecedor no frio do norte que faz você desejar a escuridão de volta. Combo: Acidentar + Devorar + Surpresa!.</div>
+          </div>
+        </div>
+
+        <div class="threat-card">
+          <div class="threat-head"><span class="glyph">🧩</span><h4>Estratégico</h4><span class="arrow">▶</span></div>
+          <div class="threat-quote">Sabe exatamente o que quer, quando quer e como quer, traçando objetivos de forma tática.</div>
+          <div class="threat-body">
+            <h4>Passiva</h4><p>+1 no número de caminhos armadilha grátis e no máximo por Cena de Suspense.</p>
+            <h4>Ações Únicas</h4><p>Restringir, Acidentar, Devorar, Infectar, Incapacitar.</p>
+            <h4>Intento Único</h4><p>+1 PH por armadilha ativada em Cena de Suspense.</p>
+            <div class="example-killer"><b>O Rato</b> (Estratégico + Perseguidor) — ninguém sabe quem é essa lenda que arma a cena perfeita através de salas de chat e notícias falsas. Combo: Acidentar + Restringir + Mudança de Planos.</div>
+          </div>
+        </div>
+
+        <div class="threat-card">
+          <div class="threat-head"><span class="glyph">🔥</span><h4>Inato</h4><span class="arrow">▶</span></div>
+          <div class="threat-quote">Alimentado por uma força nefasta do fundo da alma, muitas vezes deixando o poder subir à cabeça.</div>
+          <div class="threat-body">
+            <h4>Passiva</h4><p>Ao começar um Encontro ou Suspense com 3+ PH, ganhe um dado a mais.</p>
+            <h4>Ações Únicas</h4><p>Acidentar, Destruir, Segurar, Amaldiçoar.</p>
+            <h4>Intento Único</h4><p>+1 PH cada vez que um Intérprete passar de 6 Pontos de Tensão.</p>
+            <div class="example-killer"><b>O Coitado</b> (Inato + Descontrolada) — sentindo-se abandonado pela sociedade, ganhou poderes de um deus e virou vigilante vingativo. Combo: Destruir + Devorar + Indiferença Perturbadora.</div>
+          </div>
+        </div>
+
+        <div class="threat-card">
+          <div class="threat-head"><span class="glyph">🖥️</span><h4>Máquina</h4><span class="arrow">▶</span></div>
+          <div class="threat-quote">A tecnologia pode ser mais perigosa do que parece — o útil do dia a dia se torna aterrorizante.</div>
+          <div class="threat-body">
+            <h4>Passiva</h4><p>Testes de Partir para Cima contra você têm dificuldade +1.</p>
+            <h4>Ações Únicas</h4><p>Infectar, Destruir, Amaldiçoar, Restringir.</p>
+            <h4>Intento Único</h4><p>A cada Encontro, descarte 1 dado para ganhar 3 PH.</p>
+            <div class="example-killer"><b>O Obsoleto</b> (Máquina + Assombração) — nada que você deleta realmente some; é corrompido e deixado de lado. Combo: Infectar + Possuir + Ataque do Coração.</div>
+          </div>
+        </div>
+
+        <div class="threat-card">
+          <div class="threat-head"><span class="glyph">🕯️</span><h4>Mestre</h4><span class="arrow">▶</span></div>
+          <div class="threat-quote">Não tema o Assassino, tema os seus seguidores. Pode ser um culto, um político, ou uma histeria coletiva.</div>
+          <div class="threat-body">
+            <h4>Passiva</h4><p>Sua segunda Ameaça representa a Ameaça da Horda. Role o Dado da Horda (DH) — revele apenas em Encontros. Esse valor mostra quantas Sobreviventes um Ferir pode afetar.</p>
+            <h4>Ações Únicas</h4><p>Segurar, Infectar, Possuir, Devorar, Incapacitar.</p>
+            <h4>Intento Único</h4><p>+1 PH toda vez que um Intérprete receber sua primeira Sequela.</p>
+            <div class="example-killer"><b>O Profeta</b> (Mestre + Carniceira) — "ou você faz parte da carnificina, ou você se torna a carne". Combo: Devorar + Possuir + Sua Hora Chegou.</div>
+          </div>
+        </div>
+
+        <div class="threat-card">
+          <div class="threat-head"><span class="glyph">🧟</span><h4>Monstruosidade</h4><span class="arrow">▶</span></div>
+          <div class="threat-quote">Fruto de um experimento fracassado ou cria de um pântano maldito. Talvez seja só sua natureza matar.</div>
+          <div class="threat-body">
+            <h4>Passiva</h4><p>Uma vez por Encontro, ao ferir, role 2 dados e distribua o resultado entre duas Sobreviventes na cena.</p>
+            <h4>Ações Únicas</h4><p>Incapacitar, Devorar, Destruir.</p>
+            <h4>Intento Único</h4><p>+2 PH quando uma Sobrevivente morrer.</p>
+            <div class="example-killer"><b>O Enigma</b> (Monstruosidade + Perseguidor) — a criatura na floresta que virou lenda local contada de geração em geração. Combo: Destruir + Incapacitar + Corte Profundo.</div>
+          </div>
+        </div>
+
+        <div class="threat-card">
+          <div class="threat-head"><span class="glyph">⏱️</span><h4>Obstinado</h4><span class="arrow">▶</span></div>
+          <div class="threat-quote">Imparável. Só dá fim à caçada ao completar seus objetivos nefastos.</div>
+          <div class="threat-body">
+            <h4>Passiva</h4><p>Escolha uma Sobrevivente como seu "brinquedo especial" — dados descartados por ela em Testes de Susto vão para você.</p>
+            <h4>Ações Únicas</h4><p>Destruir, Segurar, Devorar, Restringir.</p>
+            <h4>Intento Único</h4><p>+3 PH toda vez que alguém escapar na primeira rodada de um Encontro.</p>
+            <div class="example-killer"><b>A Paradoxo</b> (Obstinado + Estratégico) — a agente perfeita, enviada para finalizar a missão. Se você vencer, ela volta minutos depois, mais preparada. Combo: Acidentar + Restringir + Não Há Saída.</div>
+          </div>
+        </div>
+
+        <div class="threat-card">
+          <div class="threat-head"><span class="glyph">👣</span><h4>Perseguidor</h4><span class="arrow">▶</span></div>
+          <div class="threat-quote">Não adianta correr: sabe por onde você passou e por onde vai passar. Sempre observa de longe.</div>
+          <div class="threat-body">
+            <h4>Passiva</h4><p>Se uma Sobrevivente tem ferida maior que 3, seus testes de Vazar Dali têm dificuldade +1.</p>
+            <h4>Ações Únicas</h4><p>Devorar, Segurar, Restringir, Acidentar.</p>
+            <h4>Intento Único</h4><p>+1 PH toda vez que alguém falhar todos os dados num Vazar Dali.</p>
+            <div class="example-killer"><b>O Envenenado</b> (Perseguidor + Máquina) — o veículo demoníaco que persegue incessantemente quem o desafia em corridas insanas. Combo: Destruir + Segurar + Eu Voltarei.</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>Conduzindo uma Cena de Suspense</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <p>Cenas de Suspense são organizadas em rodadas, sem iniciativa fixa. Você narra a situação tensa e os Intérpretes escolhem <strong>Caminhos</strong> — pontos de interesse do ambiente — e uma <strong>Abordagem</strong> para cada um.</p>
+        <h4>Abordagens dos Intérpretes</h4>
+        <div class="grid-cards">
+          <div class="mini-card"><h5>Direta</h5><p>Segue o Caminho sem cerimônia. Fica suscetível a Armadilhas.</p></div>
+          <div class="mini-card"><h5>Investigativa</h5><p>Teste complexo de Astúcia ou Carisma. Em sucesso, revela um Passo do Caminho.</p></div>
+          <div class="mini-card"><h5>Cautelosa</h5><p>Tenta desativar Armadilhas do Caminho, mas não descobre Passos.</p></div>
+        </div>
+        <h4>Passos e Resolução</h4>
+        <p>Defina quantos Passos são necessários para resolver o desafio com a fórmula:</p>
+        <div class="note"><b>Limite de Passos (LP) = 4 − maior valor de Ameaça do Assassino</b> &nbsp;·&nbsp; Você pode gastar 4 PH no início da cena para adicionar mais 1 Passo, e deve esconder ao menos 1 Passo por rodada.</div>
+        <h4>Armadilhas</h4>
+        <p>Incorpore suas Ações de Assassino como Armadilhas em Caminhos específicos. Se múltiplas Sobreviventes seguirem o mesmo Caminho, só a primeira sofre o efeito (exceto Assustar, que afeta todo mundo). Você pode gastar um dado da sua pilha para receber uma Armadilha extra por rodada — no máximo 6 armadilhas por rodada. Colocar uma Armadilha num Caminho que já tem um Passo custa o dobro.</p>
+        <div class="note blood"><span class="lbl">Exemplo rápido</span>Numa igreja amaldiçoada: "Gavetas carcomidas por cupins", "Confessionário tombado", "Livro velho sobre o púlpito" e "Marcações suspeitas no chão" são Caminhos. Um deles pode esconder um Passo da Resolução; outro, uma Armadilha de Assustar.</div>
+        <h4>Deixando a cena mais tensa</h4>
+        <div class="pill-row">
+          <span class="pill">Tempo limite por rodada</span>
+          <span class="pill">Urgência (nº máximo de rodadas)</span>
+          <span class="pill">Cada um por si (decisões em segredo)</span>
+          <span class="pill">Limitação (não repetir Caminho)</span>
+          <span class="pill">Fardo (um Caminho obrigatório sempre)</span>
+        </div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>Cenários da matança: Ambientes e Qualidades</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <p>Um <strong>Cenário</strong> é o lugar do seu Thriller inteiro, composto por <strong>Ambientes</strong> relevantes para a narrativa. Cada Ambiente pode ter <strong>Qualidades</strong> que mudam a forma como todos interagem com ele.</p>
+        <table class="rule-table">
+          <tr><th>Tipo</th><th>Quem invoca</th><th>Efeito</th></tr>
+          <tr><td><strong>Favorável</strong></td><td>Intérpretes</td><td>Ajuda as Sobreviventes: esconderijos, recursos, enfermarias.</td></tr>
+          <tr><td><strong>Neutra</strong></td><td>Qualquer um na mesa</td><td>Afeta os dois lados: riscos e recompensas mistos.</td></tr>
+          <tr><td><strong>Desfavorável</strong></td><td>Diretora</td><td>Prejudica as Sobreviventes: escuridão, armadilhas, perigo extra.</td></tr>
+        </table>
+        <h4>Rito de Iniciação (no começo de cada sessão)</h4>
+        <ol>
+          <li>Role um dado da sua pilha — define quantos Clamores Desfavoráveis você pode usar.</li>
+          <li>Os Intérpretes fazem oferendas com seus próprios dados; cada resultado acima de 3 gera um Clamor Favorável.</li>
+          <li>Você também pode ofertar dados iniciais em troca de mais Clamores Desfavoráveis (número de oferendas limitado ao seu menor NB).</li>
+          <li>Os Intérpretes podem tentar anular um Clamor seu, transformando-o em Neutro.</li>
+        </ol>
+        <h4>Lista de Qualidades (exemplos prontos para usar)</h4>
+        <div class="grid-cards">
+          <div class="mini-card"><h5>Escotilha <span class="cost">Favorável</span></h5><p>−1 Etapa de Fuga para a primeira que conseguir escapar.</p></div>
+          <div class="mini-card"><h5>Ponto Fraco <span class="cost">Favorável</span></h5><p>O Assassino perde metade dos dados se tiver 14 ou mais.</p></div>
+          <div class="mini-card"><h5>Suprimentos <span class="cost">Favorável</span></h5><p>Cura o dobro de feridas neste Ambiente.</p></div>
+          <div class="mini-card"><h5>Cozinha <span class="cost">Neutra</span></h5><p>Partir para Cima −1 dificuldade, mas o Assassino ganha 1 dado ao entrar no Encontro.</p></div>
+          <div class="mini-card"><h5>Confusão <span class="cost">Neutra</span></h5><p>Iniciativa invertida; Matar custa o dobro no primeiro turno.</p></div>
+          <div class="mini-card"><h5>Desastre Iminente <span class="cost">Neutra</span></h5><p>Todos descartam 1 dado no início de seus turnos.</p></div>
+          <div class="mini-card"><h5>Escuro <span class="cost">Desfavorável</span></h5><p>Testes de Partir para Cima se tornam Complexos.</p></div>
+          <div class="mini-card"><h5>Chão Dificultoso <span class="cost">Desfavorável</span></h5><p>Testes de Vazar Dali se tornam Complexos.</p></div>
+          <div class="mini-card"><h5>Entrada Surpresa <span class="cost">Desfavorável</span></h5><p>Cada Sobrevivente te dá 1 dado ao entrar no Ambiente pela primeira vez.</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>Funções Ocultas (papéis especiais e secretos)</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <p>Arquétipos especiais jogados em segredo — combine com a mesa antes de usar, eles mudam bastante a dinâmica social do jogo.</p>
+        <h4>O Traidor</h4>
+        <p>Trabalha para sabotar o grupo e ajudar o Assassino. Acumula <strong>Pontos de Enganação</strong> ao perder dados ou ser ferido, podendo doar dados secretamente ao Assassino ("Adoração") e, após "A Grande Revelação", ganhar ações traiçoeiras como Facada pelas Costas.</p>
+        <h4>A Possuída</h4>
+        <p>Uma Sobrevivente que não sabe que está sendo alvo de uma possessão progressiva (níveis 1 a 3). No nível máximo, ela é completamente controlada pela Diretora e age como um segundo Assassino.</p>
+        <h4>O Vulto Entre Nós</h4>
+        <p>O jogador é literalmente o Assassino disfarçado de Sobrevivente, combinando sinais discretos com a Diretora para agir sem ser notado — até que a máscara caia.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ TAB 3 ============ -->
+  <section class="panel" id="panel-3">
+    <div class="panel-intro">
+      <span class="eyebrow">Capítulo 03 — Antes de a matança começar</span>
+      <h2>Regras e como montar seu personagem</h2>
+      <p>Tudo que você precisa para criar uma Sobrevivente do zero: atributos, arquétipos, habilidades e as marcas que ficam depois que você sobrevive à noite.</p>
+    </div>
+
+    <details class="case" open>
+      <summary><span>Resumo rápido da criação de personagem</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <ol>
+          <li>Escolha um <strong>Arquétipo</strong> para viver (ou morrer) no Thriller.</li>
+          <li>Escolha uma entre as cinco <strong>Habilidades</strong> do seu arquétipo.</li>
+          <li>Marque as <strong>Especialidades</strong> indicadas pelo seu arquétipo (dois atributos).</li>
+          <li>Anote as <strong>Vantagens</strong> permitidas pelas suas especialidades.</li>
+          <li>Defina livremente: personalidade, aparência, pronomes, idade e história prévia.</li>
+        </ol>
+        <div class="note">Quando tiver tudo pronto, vá até a aba <strong>"Montar Ficha"</strong> para preencher e baixar sua ficha em PDF.</div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>Os 5 Atributos</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <p>Cada Arquétipo tem Especialidade em dois atributos — testes que os usem como base reduzem a dificuldade padrão em 1.</p>
+        <div class="attr-grid">
+          <div class="attr-card"><span class="glyph">💪</span><h5>Força</h5><p>Potência física</p></div>
+          <div class="attr-card"><span class="glyph">🏃</span><h5>Agilidade</h5><p>Velocidade, destreza, reflexos</p></div>
+          <div class="attr-card"><span class="glyph">🧠</span><h5>Astúcia</h5><p>Conhecimento, raciocínio</p></div>
+          <div class="attr-card"><span class="glyph">🛡️</span><h5>Vigor</h5><p>Resiliência física</p></div>
+          <div class="attr-card"><span class="glyph">💬</span><h5>Carisma</h5><p>Habilidade interpessoal</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>Habilidades e Cicatrizes</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <p>Ao criar sua Sobrevivente pela primeira vez, escolha uma entre as cinco habilidades do seu arquétipo. Cada uma altera alguma cena do jogo de um jeito diferente.</p>
+        <p>Depois de <strong>sobreviver</strong> a um Thriller, sua personagem ganha uma <strong>Cicatriz</strong> — se a Diretora permitir, escolha uma opção:</p>
+        <ol>
+          <li>Escolher mais uma Habilidade do seu próprio arquétipo.</li>
+          <li>Escolher a Habilidade de um arquétipo de outra pessoa que morreu no Thriller.</li>
+          <li>Escolher a <strong>Cicatriz de Sobrevivente</strong> especial do seu arquétipo (a sexta habilidade, mais poderosa).</li>
+        </ol>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>Apegos — desenvolva um de cada</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <table class="rule-table">
+          <tr><th>Apego</th><th>O que é</th><th>Recompensa em cena</th></tr>
+          <tr><td><strong>Item Icônico</strong></td><td>Um objeto que é quase uma extensão do corpo da personagem</td><td>1 Ponto de Tensão</td></tr>
+          <tr><td><strong>Relação Afetiva</strong></td><td>Uma pessoa (ou pet) que é um porto seguro</td><td>2 Pontos de Tensão</td></tr>
+          <tr><td><strong>Desejo Obscuro</strong></td><td>Algo que ela prefere manter em segredo</td><td>3 Pontos de Tensão</td></tr>
+        </table>
+      </div>
+    </details>
+
+    <details class="case">
+      <summary><span>Arquétipos: escolha quem você vai encarnar</span><span class="arrow">▶</span></summary>
+      <div class="case-body">
+        <p>Um Arquétipo é a base de personagem — um clichê clássico do slasher que você pode reinventar como quiser. Toque em cada um para ver suas 5 habilidades disponíveis.</p>
+
+        <div class="arch-card">
+          <div class="arch-head"><span class="glyph">🏈</span><h4>Atleta</h4><span class="arrow">▶</span></div>
+          <div class="arch-desc">Capitão do time, ginasta ou bailarino — acostumado a explorar os limites do próprio corpo.</div>
+          <div class="arch-body">
+            <div class="ability-row"><div class="name">Home Run!</div><p>Uma vez por Encontro, compre uma Vantagem com Pontos de Tensão mesmo dentro do Encontro.</p></div>
+            <div class="ability-row"><div class="name">Eu Aguento!</div><p>Uma vez por Encontro, substitua o valor de uma rolagem pelo valor do Dado Marcador.</p></div>
+            <div class="ability-row"><div class="name">Não Foi Nada!</div><p>Uma vez por Cena, ignore os efeitos de uma qualidade desfavorável do ambiente.</p></div>
+            <div class="ability-row"><div class="name">Você Consegue!</div><p>Ao escapar de um Encontro, dê a outra Sobrevivente um Dado de Fuga automático.</p></div>
+            <div class="ability-row"><div class="name">Sempre Me Superando</div><p>Uma vez por Encontro, recuse-se a aumentar sua Sequela ao receber um ferimento.</p></div>
+            <div class="ability-row"><div class="name">Hora de Revanche! <span class="cost">(Cicatriz de Sobrevivente)</span></div><p>Uma vez por Encontro, gaste um dado para usar duas ações no turno.</p></div>
+          </div>
+        </div>
+
+        <div class="arch-card">
+          <div class="arch-head"><span class="glyph">🔍</span><h4>Cética</h4><span class="arrow">▶</span></div>
+          <div class="arch-desc">Acha que você está vendo filmes de terror demais. Duvida do perigo até o último segundo.</div>
+          <div class="arch-body">
+            <div class="ability-row"><div class="name">Impossível!</div><p>Re-role todo Teste de Susto uma vez.</p></div>
+            <div class="ability-row"><div class="name">Deve Ter uma Explicação!</div><p>Fora de um Encontro, uma vez por sessão, descubra a quantidade de dados do Assassino.</p></div>
+            <div class="ability-row"><div class="name">Talvez Eu Estivesse Errada…</div><p>Ao tirar 6 num Teste de Susto, transforme um dado em Dado de Fuga no começo de um Encontro.</p></div>
+            <div class="ability-row"><div class="name">Só Pode Ser Isso!</div><p>Após uma Armadilha te afetar em Suspense, descubra quantas Armadilhas restam no ambiente.</p></div>
+            <div class="ability-row"><div class="name">Não É Tão Ruim!</div><p>As 3 primeiras falhas num Ritual viram qualidades neutras (o dado ainda é descartado).</p></div>
+            <div class="ability-row"><div class="name">Faz Direito! <span class="cost">(Cicatriz de Sobrevivente)</span></div><p>Uma vez por Encontro, ceda sua ação a um aliado — ele age de novo e ambos ganham um dado.</p></div>
+          </div>
+        </div>
+
+        <div class="arch-card">
+          <div class="arch-head"><span class="glyph">💄</span><h4>Esbelto</h4><span class="arrow">▶</span></div>
+          <div class="arch-desc">Extremamente atraente aos olhos de todos — beleza que traz benefícios sociais.</div>
+          <div class="arch-body">
+            <div class="ability-row"><div class="name">Não Perco a Pose!</div><p>Uma vez por Encontro, re-role seus dados ao Vazar Dali.</p></div>
+            <div class="ability-row"><div class="name">Eu Sou o Melhor!</div><p>Ganhe 1 Ponto de Tensão sempre que tirar 6 num dado.</p></div>
+            <div class="ability-row"><div class="name">Tira Ele de Mim!</div><p>Ao receber dados de um Ajudar Alguém, ganhe +1 dado extra da pilha de descarte.</p></div>
+            <div class="ability-row"><div class="name">Olhos em Mim!</div><p>Uma vez por sessão, force o Assassino a focar em você — se ele usar Ferir, ganhe PT igual ao resultado.</p></div>
+            <div class="ability-row"><div class="name">Nasci Virada para a Lua!</div><p>Tenha um dado extra para usar no Rito de Iniciação sem sacrificar um seu.</p></div>
+            <div class="ability-row"><div class="name">Sei Que Sou Demais! <span class="cost">(Cicatriz de Sobrevivente)</span></div><p>Gaste 4 PT para dar +2 PT a todos os outros jogadores. Uma vez por Encontro.</p></div>
+          </div>
+        </div>
+
+        <div class="arch-card">
+          <div class="arch-head"><span class="glyph">🦸</span><h4>Herói</h4><span class="arrow">▶</span></div>
+          <div class="arch-desc">Corajoso e conveniente — está ali para salvar todo mundo, com um empurrãozinho de sorte.</div>
+          <div class="arch-body">
+            <div class="ability-row"><div class="name">Até o Fim!</div><p>Ao Arriscar Tudo para si mesmo, mantenha um único dado ao invés de sacrificar todos.</p></div>
+            <div class="ability-row"><div class="name">Vai na Fé!</div><p>Uma vez por sessão, ao Ajudar Alguém, transforme os dados doados em Dados de Fuga.</p></div>
+            <div class="ability-row"><div class="name">Tudo por Você!</div><p>Ao Arriscar Tudo para salvar outra pessoa, descarte só metade dos seus dados.</p></div>
+            <div class="ability-row"><div class="name">Segue o Pai!</div><p>Se seus aliados estiverem no mesmo Caminho que você em Suspense, riscos deles têm −1 dificuldade.</p></div>
+            <div class="ability-row"><div class="name">Eu Te Protejo!</div><p>Cancele uma qualidade desfavorável de um aliado; enquanto isso, seus testes ficam Complexos.</p></div>
+            <div class="ability-row"><div class="name">Já Se Esqueceu de Mim? <span class="cost">(Cicatriz de Sobrevivente)</span></div><p>Continue na iniciativa após escapar, podendo entregar um Dado de Fuga a outra pessoa.</p></div>
+          </div>
+        </div>
+
+        <div class="arch-card">
+          <div class="arch-head"><span class="glyph">🤓</span><h4>Nerd</h4><span class="arrow">▶</span></div>
+          <div class="arch-desc">Não tem tempo pra galera popular — ocupado demais com a cabeça enfiada nos livros.</div>
+          <div class="arch-body">
+            <div class="ability-row"><div class="name">Deixa Comigo!</div><p>Uma vez por Encontro, reduza em 1 o custo de uma Vantagem comprada por outra pessoa.</p></div>
+            <div class="ability-row"><div class="name">Eu Tenho uma Teoria!</div><p>Uma vez por sessão, force a Diretora a anunciar a próxima ação do Assassino.</p></div>
+            <div class="ability-row"><div class="name">Prevejo Tramoias!</div><p>Uma vez por Cena de Suspense, descubra o resultado de um Caminho sem ativar Armadilhas.</p></div>
+            <div class="ability-row"><div class="name">Eu Sei um Atalho!</div><p>Uma vez por sessão, descubra a quantidade de Dados de Fuga necessários para escapar.</p></div>
+            <div class="ability-row"><div class="name">Você Não Vai Querer Saber!</div><p>Uma vez por sessão, use estudos ocultos para realizar uma Oferenda durante a jogatina.</p></div>
+            <div class="ability-row"><div class="name">Eu Sei o Seu Poder de Luta! <span class="cost">(Cicatriz de Sobrevivente)</span></div><p>Gaste um turno para descobrir quantos dados o Assassino tem. Uma vez por sessão.</p></div>
+          </div>
+        </div>
+
+        <div class="arch-card">
+          <div class="arch-head"><span class="glyph">🕊️</span><h4>Inocente</h4><span class="arrow">▶</span></div>
+          <div class="arch-desc">Não fez nada de errado. Uma pessoa boa e confiável em meio a todo esse caos.</div>
+          <div class="arch-body">
+            <div class="ability-row"><div class="name">Me Ajudem!</div><p>Uma vez por sessão, quem usar Ajudar Alguém em você não perde os dados doados.</p></div>
+            <div class="ability-row"><div class="name">Eu Não Quero Morrer!</div><p>Sendo o último no Encontro, Arrisque Tudo e mantenha seus dados.</p></div>
+            <div class="ability-row"><div class="name">Não Mereço Isso!</div><p>Uma vez por sessão, ignore os efeitos de uma habilidade especial do Assassino.</p></div>
+            <div class="ability-row"><div class="name">Se Fosse uma Cobra!</div><p>A primeira Armadilha que você ativar em Suspense não tem efeito e é descartada.</p></div>
+            <div class="ability-row"><div class="name">Foi Sorte de Principiante!</div><p>Durante um Ritual, re-role suas oferendas falhas até duas vezes.</p></div>
+            <div class="ability-row"><div class="name">Pureza de Espírito <span class="cost">(Cicatriz de Sobrevivente)</span></div><p>Uma vez por sessão, livre-se de um Dado Marcador e ganhe o valor dele em dados.</p></div>
+          </div>
+        </div>
+
+        <div class="arch-card">
+          <div class="arch-head"><span class="glyph">😴</span><h4>Relaxado</h4><span class="arrow">▶</span></div>
+          <div class="arch-desc">Está com a cabeça em outro lugar na maior parte do dia — talvez seja melhor estar sóbrio agora.</div>
+          <div class="arch-body">
+            <div class="ability-row"><div class="name">Uh? Quê?</div><p>Uma vez por Encontro, ignore um Teste de Susto.</p></div>
+            <div class="ability-row"><div class="name">Olé!</div><p>Ao receber um ferimento, role de novo o Dado Marcador e mantenha o novo resultado.</p></div>
+            <div class="ability-row"><div class="name">Posso Até Tentar!</div><p>Compre uma Vantagem de uma especialidade que não tem, se passar num teste dela.</p></div>
+            <div class="ability-row"><div class="name">Uni-Duni-Tê!</div><p>No 1º turno de Suspense, escolha dois Caminhos e seja afetado por ambos.</p></div>
+            <div class="ability-row"><div class="name">Minha Nossa!</div><p>Uma vez por sessão, force um Teste de Susto em si mesmo e ative uma qualidade favorável.</p></div>
+            <div class="ability-row"><div class="name">Já Estou Acostumado! <span class="cost">(Cicatriz de Sobrevivente)</span></div><p>O custo de Choque de Realidade fica permanentemente reduzido a 5 PT.</p></div>
+          </div>
+        </div>
+
+        <div class="arch-card">
+          <div class="arch-head"><span class="glyph">😤</span><h4>Valentona</h4><span class="arrow">▶</span></div>
+          <div class="arch-desc">Parece um babaca, exceto quando tem um assassino à solta. Você quer essa pessoa do seu lado agora.</div>
+          <div class="arch-body">
+            <div class="ability-row"><div class="name">Daqui Ninguém Me Tira!</div><p>Uma vez por sessão, recuse-se a sacrificar ou descartar dados numa rolagem.</p></div>
+            <div class="ability-row"><div class="name">Eu Não Tenho Medo de Você!</div><p>Descarte um Dado de Fuga para remover um dado das mãos do Assassino.</p></div>
+            <div class="ability-row"><div class="name">Me Passa o Que É Seu!</div><p>Use sua ação para roubar um Dado de Fuga de outro personagem.</p></div>
+            <div class="ability-row"><div class="name">O Que Não Me Mata Me Fortalece!</div><p>Ao ser afetada por uma Armadilha, ganhe 2 Pontos de Tensão.</p></div>
+            <div class="ability-row"><div class="name">Nem Fodendo</div><p>Uma vez por sessão, impeça uma qualidade negativa de ser ativada num cenário.</p></div>
+            <div class="ability-row"><div class="name">Você Vai Sentir Essa Amanhã! <span class="cost">(Cicatriz de Sobrevivente)</span></div><p>Ao usar Partir para Cima, arrisque-se de forma Complexa e remova mais de um dado do Assassino.</p></div>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============ TAB 4 ============ -->
+  <section class="panel" id="panel-4">
+    <div class="panel-intro">
+      <span class="eyebrow">Capítulo 04 — Antes da noite começar</span>
+      <h2>Monte sua ficha de Sobrevivente</h2>
+      <p>Preencha os campos abaixo para criar sua personagem. Tudo é interativo: clique nos marcadores para preencher dados, feridas, etapas de fuga e tensão. Quando terminar, baixe sua ficha em PDF.</p>
+    </div>
+
+    <div class="sheet-toolbar">
+      <button class="btn" id="downloadPdfBtn">📄 Baixar ficha em PDF</button>
+      <button class="btn ghost" id="addAbility" type="button">+ Adicionar habilidade</button>
+      <button class="btn ghost" id="addItem" type="button">+ Adicionar item ao inventário</button>
+      <span class="status-msg" id="pdfStatusMsg"></span>
+    </div>
+
+    <div class="sheet" id="sheetCapture">
+      <div class="sheet-inner">
+
+        <div class="sheet-title">
+          <div class="callsign">☏ chamada em andamento</div>
+          <h2>RPG PÂNICO</h2>
+          <div class="tagline">Especial Halloween 2026</div>
+          <div class="tagline" style="font-style:italic; margin-top:6px; color:var(--ink-dim);">"Todo mundo tem um segredo. A questão é até onde você iria para protegê-lo."</div>
+        </div>
+
+        <div class="sheet-divider">━━━━━━━━━━━━━━━━━━━━━━</div>
+
+        <div class="sheet-section">
+          <div class="sec-title">˗ˏˋ ☏ ˎˊ˗ Identidade<span class="line"></span></div>
+          <div class="field-grid">
+            <div class="field"><label>Nome do player</label><input type="text" placeholder="Seu nome"></div>
+            <div class="field"><label>Nome do personagem</label><input type="text" id="charNameInput" placeholder="Nome da sobrevivente"></div>
+            <div class="field"><label>Idade</label><input type="text" placeholder="Ex: 17 anos"></div>
+            <div class="field"><label>Pronomes</label><input type="text" placeholder="Ex: ela/dela"></div>
+            <div class="field"><label>Classe (arquétipo)</label>
+              <select>
+                <option value="">Selecione o arquétipo...</option>
+                <option>Atleta</option><option>Cética</option><option>Esbelto</option>
+                <option>Herói</option><option>Nerd</option><option>Inocente</option>
+                <option>Relaxado</option><option>Valentona</option>
+              </select>
+            </div>
+            <div class="field"><label>Fantasia de Halloween</label><input type="text" placeholder="Descreva sua roupinha!"></div>
+          </div>
+        </div>
+
+        <div class="sheet-divider">━━━━━━━━━━━━━━━━━━━━━━</div>
+
+        <div class="sheet-section">
+          <div class="sec-title">٠🔪ིྀ⭑ Quem é você?<span class="line"></span></div>
+          <div class="field-grid">
+            <div class="field full"><label>Backstory</label><textarea placeholder="Como ele cresceu? Como é sua relação com família e amigos? O que faz da vida? Como conheceu o resto do grupo?"></textarea></div>
+            <div class="field full"><label>Aparência</label><textarea placeholder="Descreva a aparência do personagem."></textarea></div>
+            <div class="field full"><label>Personalidade</label><textarea placeholder="Como ele age? É impulsivo? Medroso? Confiante? Manipulador? Extrovertido?"></textarea></div>
+          </div>
+        </div>
+
+        <div class="sheet-divider">━━━━━━━━━━━━━━━━━━━━━━</div>
+
+        <div class="sheet-section">
+          <div class="sec-title">☠ Status<span class="line"></span></div>
+          <div class="tracker-block">
+            <div class="tracker-row"><span class="t-label">🎲 Pilha de dados</span><div class="dots" id="trackerDice" data-current="3"></div></div>
+            <div class="tracker-row"><span class="t-label">🩸 Feridas</span><div class="dots" id="trackerWounds" data-current="0"></div></div>
+            <div class="tracker-row"><span class="t-label">🏃 Etapas de fuga</span><div class="dots" id="trackerEscape" data-current="0"></div></div>
+            <div class="tracker-row"><span class="t-label">⚡ Pontos de tensão</span><div class="dots" id="trackerTension" data-current="0"></div></div>
+          </div>
+        </div>
+
+        <div class="sheet-divider">━━━━━━━━━━━━━━━━━━━━━━</div>
+
+        <div class="sheet-section">
+          <div class="sec-title">✞ Características<span class="line"></span></div>
+          <div class="field-grid">
+            <div class="field full"><label>Vantagens / especialidades</label><input type="text" placeholder="Ex: Força • Vigor"></div>
+          </div>
+          <div class="ability-entries" id="abilityList">
+            <div class="ability-entry">
+              <button class="rm" title="Remover">✕</button>
+              <div class="field-grid" style="margin-bottom:8px;">
+                <div class="field full"><label>Nome da habilidade</label><input type="text" placeholder="Ex: Não Perco a Pose!"></div>
+                <div class="field full"><label>Descrição do efeito</label><textarea placeholder="Descreva o efeito da habilidade..."></textarea></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sheet-divider">━━━━━━━━━━━━━━━━━━━━━━</div>
+
+        <div class="sheet-section">
+          <div class="sec-title">📽 Segredos<span class="line"></span></div>
+          <div class="field-grid">
+            <div class="field full"><label>Motivo para matar (opcional / secreto)</label><input type="text" placeholder="..."></div>
+            <div class="field full"><label>Segredo específico</label><textarea placeholder="Algo que seu personagem fez ou esconde e que não quer que os outros descubram."></textarea></div>
+            <div class="field"><label>Apego · Item icônico</label><input type="text" placeholder="Ex: uma moeda da sorte"></div>
+            <div class="field"><label>Apego · Relação afetiva</label><input type="text" placeholder="Ex: sua melhor amiga"></div>
+            <div class="field full"><label>Apego · Desejo obscuro</label><input type="text" placeholder="Algo que prefere manter em segredo"></div>
+          </div>
+        </div>
+
+        <div class="sheet-divider">━━━━━━━━━━━━━━━━━━━━━━</div>
+
+        <div class="sheet-section">
+          <div class="sec-title">🎞 Psicológico<span class="line"></span></div>
+          <div class="field-grid">
+            <div class="field full"><label>Maior medo</label><input type="text" placeholder="O que a personagem mais teme?"></div>
+            <div class="field full"><label>O que faria para sobreviver?</label><input type="text" placeholder="..."></div>
+            <div class="field"><label>Em quem confia no grupo?</label><input type="text" placeholder="Nome"></div>
+            <div class="field"><label>Em quem NÃO confia?</label><input type="text" placeholder="Nome"></div>
+          </div>
+        </div>
+
+        <div class="sheet-divider">━━━━━━━━━━━━━━━━━━━━━━</div>
+
+        <div class="sheet-section">
+          <div class="sec-title">⋆˙⟡ Situação atual<span class="line"></span></div>
+          <div class="field-grid">
+            <div class="field"><label>Ferimentos</label>
+              <select><option>Nenhum</option><option>Leve</option><option>Grave</option><option>Crítico</option></select>
+            </div>
+            <div class="field"><label>Estado mental</label>
+              <select><option>Estável</option><option>Abalado</option><option>Em pânico</option><option>Colapso</option></select>
+            </div>
+          </div>
+          <div class="field full" style="margin-bottom:12px;">
+            <label>Inventário</label>
+            <div class="inv-entries" id="invList">
+              <div class="inv-entry"><input type="text" placeholder="Item do inventário..."><button class="rm" title="Remover">✕</button></div>
+              <div class="inv-entry"><input type="text" placeholder="Item do inventário..."><button class="rm" title="Remover">✕</button></div>
+              <div class="inv-entry"><input type="text" placeholder="Item do inventário..."><button class="rm" title="Remover">✕</button></div>
+            </div>
+          </div>
+          <div class="field-grid">
+            <div class="field full"><label>Observações</label><textarea placeholder="Algo importante sobre o personagem."></textarea></div>
+          </div>
+        </div>
+
+        <div class="sheet-divider">━━━━━━━━━━━━━━━━━━━━━━</div>
+
+        <div class="phrase-box">
+          <div style="font-family:var(--font-type); font-size:11px; letter-spacing:0.1em; color:var(--pumpkin); text-transform:uppercase; margin-bottom:8px;">Frase do personagem</div>
+          <input type="text" placeholder="Alguma frase que represente seu personagem.">
+        </div>
+
+        <div style="text-align:center; margin-top:20px;">
+          <div style="font-family:var(--font-type); font-size:11px; letter-spacing:0.1em; color:var(--ink-dim); text-transform:uppercase; margin-bottom:10px;">Status</div>
+          <div class="status-toggle" style="justify-content:center;">
+            <span class="status-opt" data-val="vivo">◉ Vivo</span>
+            <span class="status-opt" data-val="ferido">◉ Ferido</span>
+            <span class="status-opt" data-val="morto">◉ Morto</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Baseado no sistema BRUTAL RPG (versão de playtest) · Documento de referência criado para a mesa · Boa sorte. Vão precisar.
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+// ---------- TAB SWITCHING ----------
+document.getElementById('tabs').addEventListener('click', (e)=>{
+  const btn = e.target.closest('.tab-btn');
+  if(!btn) return;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-'+btn.dataset.tab).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+
+// ---------- ARCHETYPE / THREAT ACCORDIONS ----------
+document.addEventListener('click', (e)=>{
+  const head = e.target.closest('.arch-head, .threat-head');
+  if(head){
+    head.parentElement.classList.toggle('open');
+  }
+});
+
+// ---------- DICE SIMULATOR (Tab 1) ----------
+(function(){
+  const rangeEl = document.getElementById('diceCount');
+  const rangeVal = document.getElementById('diceCountVal');
+  const riskSel = document.getElementById('riskType');
+  const rollBtn = document.getElementById('rollBtn');
+  const resultEl = document.getElementById('diceResult');
+  const summaryEl = document.getElementById('diceSummary');
+  if(!rollBtn) return;
+  rangeEl.addEventListener('input', ()=> rangeVal.textContent = rangeEl.value);
+  rollBtn.addEventListener('click', ()=>{
+    const n = parseInt(rangeEl.value,10);
+    const needed = riskSel.value === 'complex' ? 2 : 1;
+    let rolls = [];
+    for(let i=0;i<n;i++) rolls.push(1+Math.floor(Math.random()*6));
+    resultEl.innerHTML = '';
+    let successes = 0;
+    rolls.forEach(v=>{
+      const d = document.createElement('div');
+      d.className = 'die ' + (v>=4?'success':'fail');
+      d.textContent = v;
+      if(v>=4) successes++;
+      resultEl.appendChild(d);
+    });
+    const passed = successes >= needed;
+    summaryEl.innerHTML = `<b>${successes}</b> sucesso(s) de ${n} dado(s) rolado(s) — precisa de <b>${needed}</b> para superar um Risco ${needed===2?'Complexo':'Comum'}. `
+      + (passed ? '<span style="color:var(--ok)">Risco superado!</span>' : '<span style="color:var(--blood-bright)">Ação fracassada — os dados de falha são perdidos.</span>');
+  });
+})();
+
+// ---------- CHARACTER SHEET LOGIC (Tab 4) ----------
+(function(){
+  // Dot trackers
+  function buildTracker(containerId, max, fillClass, storageKeyLabel){
+    const el = document.getElementById(containerId);
+    if(!el) return;
+    let current = parseInt(el.dataset.current || '0', 10);
+    function render(){
+      el.innerHTML='';
+      for(let i=1;i<=max;i++){
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (i<=current? ' '+fillClass : '');
+        dot.addEventListener('click', ()=>{
+          current = (current === i) ? i-1 : i;
+          el.dataset.current = current;
+          render();
+        });
+        el.appendChild(dot);
+      }
+    }
+    render();
+  }
+  buildTracker('trackerDice', 6, 'filled-dice');
+  buildTracker('trackerWounds', 7, 'filled-wound');
+  buildTracker('trackerEscape', 6, 'filled-escape');
+  buildTracker('trackerTension', 10, 'filled-tension');
+
+  // Status toggle
+  document.querySelectorAll('.status-opt').forEach(opt=>{
+    opt.addEventListener('click', ()=>{
+      document.querySelectorAll('.status-opt').forEach(o=>o.classList.remove('active'));
+      opt.classList.add('active');
+    });
+  });
+  document.querySelector('.status-opt[data-val="vivo"]').classList.add('active');
+
+  // Dynamic ability entries
+  document.getElementById('addAbility').addEventListener('click', ()=>{
+    const wrap = document.getElementById('abilityList');
+    const div = document.createElement('div');
+    div.className = 'ability-entry';
+    div.innerHTML = `<button class="rm" title="Remover">✕</button>
+      <div class="field-grid" style="margin-bottom:8px;">
+        <div class="field full"><label>Nome da habilidade</label><input type="text" placeholder="Ex: Não Perco a Pose!"></div>
+        <div class="field full"><label>Descrição do efeito</label><textarea placeholder="Descreva o efeito da habilidade..."></textarea></div>
+      </div>`;
+    div.querySelector('.rm').addEventListener('click', ()=> div.remove());
+    wrap.appendChild(div);
+  });
+
+  // Dynamic inventory entries
+  document.getElementById('addItem').addEventListener('click', ()=>{
+    const wrap = document.getElementById('invList');
+    const div = document.createElement('div');
+    div.className = 'inv-entry';
+    div.innerHTML = `<input type="text" placeholder="Item do inventário...">
+      <button class="rm" title="Remover">✕</button>`;
+    div.querySelector('.rm').addEventListener('click', ()=> div.remove());
+    wrap.appendChild(div);
+  });
+
+  // ---------- PDF EXPORT ----------
+  function snapshotForCapture(container){
+    const replaced = [];
+    container.querySelectorAll('input, textarea, select').forEach(el=>{
+      const box = document.createElement('div');
+      box.className = 'pdf-static';
+      box.style.cssText = 'background:var(--bg-2);border:1px solid var(--line-strong);border-radius:8px;color:var(--paper);font-family:var(--font-body);font-size:14px;padding:9px 11px;width:100%;min-height:20px;white-space:pre-wrap;';
+      let val = '';
+      if(el.tagName === 'SELECT'){ val = el.options[el.selectedIndex] ? el.options[el.selectedIndex].text : ''; }
+      else { val = el.value && el.value.trim() ? el.value : ''; }
+      box.textContent = val || '—';
+      el.style.display = 'none';
+      el.parentNode.insertBefore(box, el);
+      replaced.push({el, box});
+    });
+    return replaced;
+  }
+  function restoreCapture(replaced){
+    replaced.forEach(({el, box})=>{
+      el.style.display = '';
+      box.remove();
+    });
+  }
+
+  document.getElementById('downloadPdfBtn').addEventListener('click', async ()=>{
+    const btn = document.getElementById('downloadPdfBtn');
+    const msg = document.getElementById('pdfStatusMsg');
+    const sheet = document.getElementById('sheetCapture');
+    btn.disabled = true;
+    const originalLabel = btn.textContent;
+    btn.textContent = 'Gerando PDF...';
+    msg.textContent = 'Revelando a ficha nas sombras...';
+    try{
+      const replaced = snapshotForCapture(sheet);
+      await new Promise(r=>setTimeout(r, 60));
+      const canvas = await html2canvas(sheet, {backgroundColor:'#0a0910', scale:1.4, useCORS:true});
+      restoreCapture(replaced);
+      const imgData = canvas.toDataURL('image/jpeg', 0.82);
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF('p','pt','a4', true);
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = pageWidth;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      let heightLeft = imgHeight;
+      let position = 0;
+      pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight, undefined, 'FAST');
+      heightLeft -= pageHeight;
+      while(heightLeft > 0){
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight, undefined, 'FAST');
+        heightLeft -= pageHeight;
+      }
+      const nameInput = document.getElementById('charNameInput');
+      const rawName = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : 'sobrevivente';
+      const safeName = rawName.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+      pdf.save(`ficha-panico-${safeName || 'sobrevivente'}.pdf`);
+      msg.textContent = 'Ficha baixada. Boa sorte lá fora.';
+    }catch(err){
+      console.error(err);
+      msg.textContent = 'Algo deu errado ao gerar o PDF. Tente novamente.';
+    }finally{
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+    }
+  });
+})();
+</script>
+</body>
+</html>
