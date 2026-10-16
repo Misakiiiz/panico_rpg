@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <title>RPG Pânico — Mesa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0910;
+            --c1: #151119;
+            --c2: #201a28;
+            --ln: rgba(236, 230, 218, .16);
+            --ink: #ece6da;
+            --dim: #a89ea3;
+            --red: #d81f2c;
+            --rd: #a4141f;
+            --org: #e07a1f;
+            --moon: #8f7ec4;
+            --ok: #4f9b6a;
+            --ty: 'Special Elite', monospace;
+            --di: 'Creepster', cursive;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px)
+        }
+
+        * {
+            box-sizing: inherit
+        }
+
+        html,
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font: 15px/1.5 system-ui, sans-serif
+        }
+
+        body {
+            background: radial-gradient(ellipse 800px 500px at 90% 0, rgba(164, 20, 31, .18), transparent 60%), var(--bg);
+            min-height: 100vh
+        }
+
+        .w {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 16px 14px 60px
+        }
+
+        h1 {
+            font: 400 clamp(2rem, 8vw, 3.2rem)/1 var(--di);
+            margin: 4px 0;
+            text-shadow: 0 0 20px rgba(164, 20, 31, .6)
+        }
+
+        h2,
+        h3 {
+            font-family: var(--ty);
+            font-weight: 400;
+            margin: 0 0 8px;
+            color: var(--org);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: .05em
+        }
+
+        .top {
+            text-align: center;
+            padding: 10px 0 14px
+        }
+
+        .top small {
+            font-family: var(--ty);
+            color: var(--moon)
+        }
+
+        .card {
+            background: var(--c1);
+            border: 1px solid var(--ln);
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 12px
+        }
+
+        button,
+        select,
+        input,
+        textarea {
+            font: inherit;
+            color: var(--ink);
+            background: var(--c2);
+            border: 1px solid var(--ln);
+            border-radius: 7px;
+            padding: 7px 10px
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 60px
+        }
+
+        input[type=text],
+        input[type=password],
+        select {
+            width: 100%
+        }
+
+        button {
+            cursor: pointer;
+            font-family: var(--ty);
+            font-size: 13px
+        }
+
+        button:hover {
+            border-color: var(--org)
+        }
+
+        button:disabled {
+            opacity: .35;
+            cursor: not-allowed
+        }
+
+        .b {
+            background: var(--rd);
+            border-color: var(--red)
+        }
+
+        .sm {
+            padding: 3px 9px
+        }
+
+        .row {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap
+        }
+
+        .sp {
+            flex: 1
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px
+        }
+
+        .cnt {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 6px 0
+        }
+
+        .cnt b {
+            font: 400 22px var(--ty);
+            min-width: 46px;
+            text-align: center
+        }
+
+        .cnt span {
+            min-width: 130px;
+            font-family: var(--ty);
+            font-size: 13px;
+            color: var(--dim)
+        }
+
+        .die {
+            display: inline-flex;
+            width: 38px;
+            height: 38px;
+            border: 2px solid var(--ln);
+            border-radius: 8px;
+            align-items: center;
+            justify-content: center;
+            font: 18px var(--ty);
+            margin: 2px
+        }
+
+        .die.s {
+            border-color: var(--ok);
+            color: var(--ok)
+        }
+
+        .die.f {
+            border-color: var(--rd);
+            color: var(--red)
+        }
+
+        .tag {
+            display: inline-block;
+            font: 12px var(--ty);
+            border: 1px solid var(--ln);
+            border-radius: 20px;
+            padding: 2px 9px;
+            margin: 2px;
+            color: var(--dim)
+        }
+
+        .vivo {
+            color: var(--ok)
+        }
+
+        .ferido {
+            color: var(--org)
+        }
+
+        .morto {
+            color: var(--red)
+        }
+
+        .mk {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            margin: 4px 0
+        }
+
+        .mk span {
+            flex: 1
+        }
+
+        .mc {
+            cursor: pointer
+        }
+
+        .mc:hover {
+            border-color: var(--org)
+        }
+
+        .dim {
+            color: var(--dim);
+            font-size: 13px
+        }
+
+        .warn {
+            color: var(--red);
+            font-family: var(--ty)
+        }
+
+        details {
+            margin-bottom: 8px
+        }
+
+        summary {
+            cursor: pointer;
+            font-family: var(--ty);
+            color: var(--ink)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="w">
+        <div class="top">
+            <h1>RPG PÂNICO</h1><small>Mesa · Halloween 2026</small>
+        </div>
+        <div id="app"></div>
+    </div>
+    <script>
+        const MASTER_PW = 'Ghostface';
+        const C = [
+            { id: 'jordan', n: 'Jordan Willians', p: 'Pedro Hatus', c: 'Herói', a: '17', pr: 'ele/dele', f: '—', sp: ['Vigor'], ab: ['Até o Fim!', 'Ao Arriscar Tudo para si mesmo, mantenha um único dado ao invés de sacrificar todos.'], bs: 'Família nuclear de classe média; pai piloto de testes, mãe professora de química. Ousado, quer ser piloto como o pai.', sec: 'Tinha um irmão que morreu afogado; travou de medo e não o ajudou. Esconde isso de todos.', ap: ['Anel de formatura de aviador do pai', 'Seu pai', 'Culpa quase patológica: precisa sempre agir'], fear: 'Ser um covarde', mt: 'nenhum', inv: [], q: '', pw: 'piloto', d: 6 },
+            { id: 'eric', n: 'Eric Molloy', p: 'Alice', c: 'Cética', a: '17', pr: 'ele/dele', f: 'Carrie coberta de sangue de porco', sp: ['Astúcia', 'Vigor'], ab: ['Impossível!', 'Re-role todo Teste de Susto uma vez.'], bs: 'De Liverpool; fugiu em intercâmbio por não aguentar o pai e a madrasta. Só a irmã Claudia o apoiava. Acha que é protagonista nato.', sec: 'Foi abusado pela madrasta quando criança; o pai não acreditou. Vive com ataques de pânico.', ap: ['Colar dourado de "C"', 'Carrie, Vivian', 'Voltar a Liverpool, levar a irmã a um lugar seguro e matar pai e madrasta'], fear: 'Ficar vulnerável para outras pessoas', mt: 'Matar quem se aproveita de outras pessoas', inv: [], q: '', pw: 'vampire', d: 6 },
+            { id: 'dakota', n: 'Dakota Solace', p: 'dante', c: 'Cética', a: '17', pr: 'ele/dele', f: 'Miguel Rivera (moletom vermelho, maquiagem de esqueleto)', sp: ['Astúcia', 'Vigor'], ab: ['Talvez eu estivesse errado...', 'Ao tirar 6 num Teste de Susto, no começo de um Encontro transforme um dado seu em Dado de Fuga. Não acumula.'], bs: 'Filho do deputado Augusto Solace; criou a irmã Liora após a morte da mãe. Alternativo, rebelde, divido entre o pai e a própria identidade.', sec: 'Recebe mesada do pai em segredo e usa para Liora, enquanto o critica publicamente.', ap: ['Colar com pingente de olho, dado por Liora', 'Sua irmã Liora', 'Que a carreira política do pai desmorone'], fear: 'Que Liora se torne parecida com o pai', mt: 'Proteger Liora caso o pai esteja envolvido em algo perigoso', inv: ['iPhone antigo', 'Gameboy falsificado', 'Perfume masculino'], q: '', pw: 'liora', d: 6 },
+            {
+                id: 'charlotte', n: 'Charlotte Earnshaw', p: 'Carol', c: 'Esbelto', a: '17', pr: 'ela/dela', f: 'Lydia (vestido de tule vermelho)', sp: ['Astúcia', 'Carisma'], ab: ['Nasci Virada para a Lua!', 'Tenha um dado extra para usar no Rito de Iniciação sem sacrificar um seu.'], bs: 'Resgatada de um incêndio e adotada por magnatas em St. Louis. Impulsiva, calculista, manipuladora; genuína só com a namorada Maddie.', sec: 'Invade necrotérios e faz autópsias ilegais para estudar anatomia.', ap: ['Diário', 'Namorada Maddie', 'Não liga para ninguém além de si e Maddie'], fear: 'Não ser levada a sério', mt: 'Puro narcisismo', inv: ['Absorvente', 'Carteira com documentos', 'Chave de casa'], q: 'We leave the damage so we never forget the damage.', pw: 'maddie', d: 6,
+                k: { th: 'Descontrolada', nb: 3, dice: 3, ph: 3, su: 4, ar: 4, fu: 4, pa: 'Ao ferir cada Sobrevivente pela 1ª vez na sessão, +1 no marcador de ferida.', ac: 'Segurar, Destruir, Devorar', it: '+1 PH por Sobrevivente que entrar num Encontro com 3 dados ou menos.', own: [] }
+            },
+            {
+                id: 'vivian', n: 'Vivian Beaumont', p: 'Carina', c: 'Esbelto', a: '17', pr: 'ela/dela', f: 'Sereia, cheia de corrente', sp: ['Carisma', 'Vigor'], ab: ['Não perco a Pose!', 'Uma vez por Encontro, re-role seus dados ao Vazar Dali.'], bs: 'Ex-nerd vítima de bullying que se reinventou na Grécia e voltou como popular, apagando seu passado (subornou um professor).', sec: 'Seu passado nerd pode destruir sua reputação; ainda ama HQs.', ap: ['Colar de ouro dado pela mãe', '—', 'Sua HQ favorita, guardada em segredo'], fear: 'Ser exposta e perder tudo que construiu', mt: 'Acabar com quem sabe quem ela era antes', inv: [], q: '', pw: 'synthima', d: 6,
+                k: { th: 'Carniceira', nb: 3, dice: 3, ph: 3, su: 4, ar: 4, fu: 4, pa: 'Ao escapar de um Encontro, 1 dado extra por Sobrevivente com ferimento superior a 3.', ac: 'Devorar, Segurar, Acidentar', it: '+1 PH sempre que usarem Cuidar de Feridas.', own: ['Ataque do Coração'] }
+            },
+            { id: 'kaleb', n: 'Kaleb / K', p: 'Italo Gabriel', c: 'Relaxado', a: '17', pr: 'Nós somos um', f: 'IT (a Coisa)', sp: ['Carisma', 'Vigor'], ab: ['Posso até tentar! e Olé!', 'Carisma: 1x/Encontro use vantagem de especialidade que não possui (teste dela; se falhar, perde os PT). Vigor: 1x/Encontro ao receber ferida, re-role o dado marcador.'], bs: 'Distraído e brincalhão até um trauma aos 12 anos. Tem uma segunda personalidade, K, fria e violenta.', sec: 'K assume o controle em pânico e já feriu (talvez matou) pessoas. Kaleb esconde isso no caderno.', ap: ['Caderno preto com caneta azul e preta', '—', 'Sua outra personalidade (K) e as mortes pelas quais ela é responsável'], fear: 'Descobrir que K matou alguém que Kaleb não queria', mt: 'K gosta de matar', inv: [], q: '', pw: 'K', d: 6 },
+            { id: 'shaun', n: 'Shaun', p: 'Diogo Henrique', c: 'Cética', a: '21', pr: 'ele/dele', f: 'Michael Jackson (Smooth Criminal)', sp: ['Astúcia', 'Vigor'], ab: ['Impossível!', 'Re-role todo Teste de Susto uma vez.'], bs: 'Fechado no próprio mundinho, fã de Michael Jackson e de filmes de terror. Vive com seu gato preto que é branco.', sec: 'Fez um altar para Michael Jackson, mostrou na escola e foi caçoado.', ap: ['Disco original de Thriller', 'Gato preto que é branco', 'Ir ao túmulo de Michael Jackson'], fear: 'Perder o gatinho que ama', mt: 'Alguém quebrar seu disco de Thriller', inv: ['Tesoura', 'Telefone'], q: '', pw: 'thriller', d: 6 },
+            { id: 'martha', n: 'Martha', p: 'kaisi', c: 'Inocente', a: '16', pr: 'ela/dela', f: 'Hatsune Miku', sp: ['Astúcia', 'Carisma'], ab: ['Carência (Me Ajudem!)', 'Uma vez por sessão, quem usar Ajudar Alguém em você não perde os dados doados.'], bs: 'Filha de pai rico e ausente; mãe desaparecida. Perfeccionista que se afunda nos estudos. Seus únicos amigos: Vivian e Erik.', sec: 'É imensamente invejosa e rancorosa com quem tem o que ela não tem.', ap: ['Pelúcia de tubarão', 'Vivian e Erik', 'Aceitação do pai'], fear: 'Falhar com as expectativas do pai', mt: 'mato nn', inv: [], q: '', pw: 'miku', d: 6 },
+            { id: 'aisha', n: 'Aisha Elowen', p: 'Enid/Clara', c: 'Popular', a: '17', pr: 'ela/dela', f: 'Freddy Fazbear improvisado', sp: ['Carisma', 'Agilidade', 'Vigor'], ab: ['Popularidade', 'Sabe conquistar a confiança das pessoas: obtém informações e convence alguém a ajudar com mais facilidade.'], bs: 'Popular, carismática, esconde o medo atrás de piadas. Conheceu o grupo na escola.', sec: 'Mantém há 2 anos uma identidade anônima na internet com que manipula amizades; alguém invadiu a conta e está vazando tudo.', ap: ['Seu celular', 'Seus amigos mais próximos', 'Sua reputação'], fear: 'Segredo descoberto e acabar sozinha', mt: '—', inv: ['Celular', 'Maquiagem', 'Canivete'], q: 'Quer me matar? Entra na fila.', pw: 'freddy', d: 6 }];
+        const TH = {
+            'Amaldiçoado': ['Dados marcadores (exceto ferida) começam com +1.', 'Possuir, Amaldiçoar, Infectar, Acidentar', '+2 PH ao colocar um Dado Marcador em uma Sobrevivente.'],
+            'Assombração': ['Se a Sobrevivente falhar num Teste de Susto carregando um Recurso, ele fica inutilizável.', 'Possuir, Amaldiçoar, Acidentar, Incapacitar', 'PH igual ao nº de Sobreviventes que falharem num Teste de Susto.'],
+            'Brutamontes': ['Ao ferir quem já tem Sequela, a Ferida recebe +1.', 'Segurar, Incapacitar, Destruir', '+2 PH sempre que os Intérpretes falharem em Partir para Cima.'],
+            'Carniceira': ['Ao escapar de um Encontro, 1 dado extra por Sobrevivente com ferimento superior a 3.', 'Devorar, Segurar, Acidentar', '+1 PH sempre que usarem Cuidar de Feridas.'],
+            'Desconhecida': ['Partir para Cima contra você é sempre Risco Complexo.', 'Possuir, Infectar, Devorar, Acidentar, Restringir', '+3 PH quando uma Sobrevivente prejudicar ativamente outra.'],
+            'Descontrolada': ['Ao ferir cada Sobrevivente pela 1ª vez na sessão, +1 no marcador de ferida.', 'Segurar, Destruir, Devorar', '+1 PH por Sobrevivente que entrar num Encontro com 3 dados ou menos.'],
+            'Estratégico': ['+1 nos caminhos armadilha grátis e no máximo por Cena de Suspense.', 'Restringir, Acidentar, Devorar, Infectar, Incapacitar', '+1 PH por armadilha ativada em Cena de Suspense.'],
+            'Inato': ['Ao começar Encontro/Suspense com 3+ PH, ganhe 1 dado a mais.', 'Acidentar, Destruir, Segurar, Amaldiçoar', '+1 PH cada vez que um Intérprete passar de 6 Pontos de Tensão.'],
+            'Máquina': ['Partir para Cima contra você tem dificuldade +1.', 'Infectar, Destruir, Amaldiçoar, Restringir', 'A cada Encontro, descarte 1 dado para ganhar 3 PH.'],
+            'Mestre': ['Sua 2ª Ameaça é a Horda: role o Dado da Horda (revele só em Encontros); mostra quantas Sobreviventes um Ferir afeta.', 'Segurar, Infectar, Possuir, Devorar, Incapacitar', '+1 PH quando um Intérprete receber sua 1ª Sequela.'],
+            'Monstruosidade': ['1x/Encontro, ao ferir, role 2 dados e distribua entre duas Sobreviventes.', 'Incapacitar, Devorar, Destruir', '+2 PH quando uma Sobrevivente morrer.'],
+            'Obstinado': ['Escolha uma Sobrevivente como brinquedo: dados que ela descartar em Testes de Susto vão para você.', 'Destruir, Segurar, Devorar, Restringir', '+3 PH quando alguém escapar na 1ª rodada de um Encontro.'],
+            'Perseguidor': ['Se a Sobrevivente tem ferida maior que 3, o Vazar Dali dela tem dificuldade +1.', 'Devorar, Segurar, Restringir, Acidentar', '+1 PH sempre que alguém falhar todos os dados num Vazar Dali.']
+        };
+        const UA = [['Acidentar', 4, 'Ao usar susto fora de Encontro, use Ferir em quem falhou.'], ['Amaldiçoar', 3, 'Dado Marcador oculto num recurso recém-encontrado; evolui a cada uso.'], ['Destruir', 4, 'Destrói um recurso ou qualidade favorável (grátis em Cena de Suspense).'], ['Devorar', 0, 'Quando alguém tirar 6, ganhe +1 PH (ela mantém o sucesso).'], ['Incapacitar', 4, 'Ao ferir, desmarca uma especialidade até Tomar Jeito.'], ['Infectar', 4, 'Dado Marcador de infecção que piora a cada cena até a morte.'], ['Possuir', 0, 'Dado Marcador sobe a cada falha da vítima; no 6 ela mata alguém por você.'], ['Restringir', 0, 'Dado Marcador (começa em 3): dificuldade +1 nos testes da vítima.'], ['Segurar', 5, 'Ao ferir sem matar, imobiliza: sem Dados de Fuga e +1 ferida por turno.']];
+        const VANT = [['Cuidar de Feridas', 'var', null, 'Gaste PT para reduzir Feridas no mesmo valor (1x/Encontro).'], ['Tomar Jeito', 3, null, 'Recupera uma especialidade incapacitada.'], ['Choque de Realidade', 6, null, '+1 dado comum na pilha.'], ['Adrenalina', 2, 'Vigor', 'Reduz a próxima ferida em 1.'], ['Caçar Recursos', 3, 'Astúcia', 'Recebe um Recurso novo.'], ['Preparar para a Próxima', 3, 'Agilidade', '+1 Dado de Fuga no próximo Vazar Dali.'], ['Ele Não Espera por Mim', 3, 'Força', 'Sucesso automático no próximo Partir para Cima.'], ['Ombro Amigo', 'var', 'Carisma', 'Doe PT a outra Sobrevivente.']];
+        const POD = [['Você Já Sofreu o Suficiente', 2], ['Eu Vejo Cada Passo Seu', 2], ['Banho de Sangue', 2], ['Corte Profundo', 2], ['Jumpscare', 2], ['Trauma', 3], ['Isso Vai Deixar Marca', 4], ['Ataque do Coração', 3], ['Surpresa!', 6], ['Eu Voltarei', 3], ['Sua Hora Chegou', 3], ['Não Há Saída', 4], ['Cansei de Brincar', 5], ['Mudança de Planos', 5], ['Fim da Esperança', 5], ['Caiam na Teia', 5], ['Indiferença Perturbadora', 2]];
+        const INT = [['Sobrevivente morre em Cena de Suspense', 5], ['Todas tentam escapar no 1º turno', 4], ['Sobrevivente cai em armadilha', 2], ['Falha em Teste de Susto', 1], ['Uso de Choque de Realidade', 1], ['Sobrevivente sai ferida de Encontro', 1], ['Sobrevivente morre em Encontro', 1], ['Sobreviventes se beijam', 1]];
+        const $ = s => document.querySelector(s), E = s => String(s ?? '').replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
+        let db = null, view = { t: 'login' }, S = {}, unsub = null, tm = {}, lastRoll = null, mem = {};
+        const def = c => ({ dice: c.d, fuga: 0, ten: 0, mk: [], buy: [], inv: [...c.inv], nt: '', st: 'vivo', km: false, k: c.k ? { dice: c.k.dice, ph: c.k.ph, su: c.k.su, own: [...c.k.own] } : null });
+        function save(id) { if (!db) { return } clearTimeout(tm[id]); tm[id] = setTimeout(() => db.collection('chars').doc(id).set({ s: JSON.stringify(S[id]) }).catch(() => { }), 350) }
+        function st(id) { return S[id] || (S[id] = def(C.find(c => c.id === id))) }
+        function parse(d) { try { return JSON.parse(d.data().s) } catch (e) { return null } }
+        async function init() { try { await claude.use('user'); db = await claude.use('db') } catch (e) { db = null } if (view.t !== 'login') render() }
+        function login() {
+            $('#app').innerHTML = `<div class="card" style="max-width:420px;margin:auto"><h2>Atender a ligação</h2><p class="dim">Escolha quem você é e digite a senha.</p>
+<select id="who"><option value="">Selecione…</option>${C.map(c => `<option value="${c.id}">${E(c.n)}</option>`).join('')}<option value="__m">🎬 Mestre</option></select><p><input type="text" id="pw" placeholder="Senha" autocomplete="off" autocapitalize="off" spellcheck="false" style="-webkit-text-security:disc"></p><button class="b" id="go">Entrar</button> <span id="err" class="warn"></span>
+${db ? '' : '<p class="dim">Sem banco compartilhado: dados só neste navegador.</p>'}</div>`;
+            $('#go').onclick = () => { const w = $('#who').value, p = $('#pw').value; if (w === '__m' && p === MASTER_PW) return open({ t: 'm' }); const c = C.find(x => x.id === w); if (c && p === c.pw) return open({ t: 's', id: w, own: true }); $('#err').textContent = 'Senha incorreta.' };
+            $('#pw').onkeydown = e => { if (e.key === 'Enter') $('#go').click() }
+        }
+        function open(v) {
+            view = v; if (unsub) { unsub(); unsub = null }
+            if (db) {
+                const col = db.collection('chars'); if (v.t === 'm') unsub = col.onSnapshot(q => { q.docs.forEach(d => { const x = parse(d); if (x) S[d.id] = x }); render() });
+                else if (v.t === 's') unsub = col.doc(v.id).onSnapshot(d => { if (d.metadata.hasPendingWrites) return; const x = d.exists && parse(d); if (x) { S[v.id] = x; const a = document.activeElement; if (!a || !/INPUT|TEXTAREA/.test(a.tagName)) render() } })
+            }
+            render()
+        }
+        function render() { view.t === 'login' ? login() : view.t === 'm' ? master() : sheet(view.id) }
+        function sum(s) { return s.mk.filter(m => m.t === 'Ferida').reduce((a, m) => a + m.v, 0) }
+        function master() {
+            $('#app').innerHTML = `<div class="row"><h2 class="sp">Mesa do Mestre — resumo</h2><button id="out">Sair</button></div><div class="grid">${C.map(c => {
+                const s = st(c.id), f = sum(s); return `<div class="card mc" data-id="${c.id}"><b>${E(c.n)}</b> <span class="${s.st}">● ${s.st}</span>${s.km ? ' <span class="warn">🔪 ASSASSINO</span>' : ''}${s.give ? ` <span class="tag">entregar ${s.give} dados</span>` : ''}${s.cl ? ` <span class="tag">clamores ${s.cl}</span>` : ''}<div class="dim">${E(c.c)} · ${E(c.p)}</div>
+${s.km && s.k ? `<div>Dados <b>${s.k.dice}</b> · PH <b>${s.k.ph}</b> · Sustos <b>${s.k.su}</b></div>` : `<div>🎲 <b>${s.dice}</b> · 🩸 Feridas <b class="${f >= 6 ? 'warn' : ''}">${f}</b> · 🏃 Fuga <b>${s.fuga}</b> · ⚡ PT <b>${s.ten}</b></div>`}
+<div>${s.mk.map(m => `<span class="tag">${E(m.t)} ${m.v}</span>`).join('') || '<span class="dim">sem marcadores</span>'}</div>
+<div class="dim">Comprados: ${s.buy.map(b => E(b.n)).join(', ') || '—'}</div></div>`
+            }).join('')}</div><p class="dim">Clique em um card para abrir a ficha completa.</p>`;
+            $('#out').onclick = () => open({ t: 'login' }); document.querySelectorAll('.mc').forEach(e => e.onclick = () => open({ t: 's', id: e.dataset.id, m: true }))
+        }
+        function cnt(l, k, v, max) { return `<div class="cnt"><span>${l}</span><button class="sm" data-a="dec" data-k="${k}">−</button><b>${v}</b><button class="sm" data-a="inc" data-k="${k}" data-max="${max || 99}">+</button></div>` }
+        function sheet(id) {
+            const c = C.find(x => x.id === id), s = st(id); if (s.km && s.k) return killer(c, s); const f = sum(s), seq = s.mk.filter(m => m.t === 'Sequela').length;
+            $('#app').innerHTML = `<div class="row"><button id="back">${view.m ? '← Mestre' : 'Sair'}</button><span class="sp"></span>${c.k && !s.km ? '<button class="b" id="mask">🎭 Tirar a Máscara</button>' : ''}</div>
+${c.k && !s.km ? `<div class="card" style="border-color:var(--rd)"><h2>🎭 O Vulto Entre Nós (secreto)</h2><p class="dim">Você é o Assassino disfarçado. Combine com a Diretora sinais para comunicar as ações do Assassino. Seus dados sacrificados ainda vão para a Diretora.</p><ul class="dim"><li>Manipule seus dados marcadores livremente quando ninguém estiver olhando.</li><li>Pode ignorar armadilhas em Cenas de Suspense.</li><li>Pode mentir sobre ter ou não uma especialidade.</li><li>Seu Choque de Realidade custa 5 PT.</li></ul><div class="row"><button id="arq" ${s.k.dice < 2 ? 'disabled' : ''}>Tudo arquitetado: −2 dados do Assassino → +1 clamor da Diretora</button><b>Clamores: ${s.cl || 0}</b></div>${view.cf ? `<div class="card" style="margin-top:10px"><p><b>Tirar a Máscara?</b> Você vira o Assassino e perde as habilidades de sobrevivente. Seus ${s.dice} dados vão para os outros Intérpretes, e seus Pontos de Tensão (${s.ten}) viram Pontos de Horror.</p><button class="b" id="mkok">Confirmar</button> <button id="mkno">Cancelar</button></div>` : ''}</div>` : ''}<div class="card"><h1 style="font-size:2rem">${E(c.n)}</h1><div class="dim">${E(c.c)} · ${E(c.a)} anos · ${E(c.pr)} · jogador(a): ${E(c.p)}</div><div class="dim">Fantasia: ${E(c.f)}</div>
+<div>${c.sp.map(x => `<span class="tag">${x}</span>`).join('')}</div>
+<div class="row" style="margin-top:6px">Status: ${['vivo', 'ferido', 'morto'].map(x => `<button class="sm ${s.st === x ? x : ''}" data-a="st" data-v="${x}">${x}</button>`).join('')}</div></div>
+<div class="card"><h2>Marcadores e dados</h2>${cnt('🎲 Dados comuns', 'dice', s.dice, 6)}${cnt('🏃 Dados de Fuga', 'fuga', s.fuga, 6)}${cnt('⚡ Pontos de Tensão', 'ten', s.ten, 10)}
+<div class="cnt"><span>🩸 Feridas (soma)</span><b class="${f >= 6 ? 'warn' : ''}">${f}</b>${f >= 6 ? '<span class="warn">MORTE!</span>' : ''}<span>Sequelas: ${seq}</span></div>
+${s.mk.map((m, i) => `<div class="mk"><span>🎲 ${E(m.t)}</span><button class="sm" data-a="mv" data-i="${i}" data-d="-1">−</button><b>${m.v}</b><button class="sm" data-a="mv" data-i="${i}" data-d="1">+</button><button class="sm" data-a="mr" data-i="${i}">✕</button></div>`).join('')}
+<div class="row"><select id="mt" style="width:auto">${['Ferida', 'Sequela', 'Infecção', 'Possessão', 'Restrição', 'Outro'].map(x => `<option>${x}</option>`).join('')}</select><button data-a="ma">+ Dado marcador</button></div></div>
+<div class="card"><h2>Rolagem de dados</h2><div class="row"><span>Dados:</span><input type="number" id="rn" min="1" max="12" value="${Math.max(1, Math.min(s.dice, 6))}" style="width:70px"><select id="rr" style="width:auto"><option value="1">Risco Comum (1 sucesso)</option><option value="2">Risco Complexo (2)</option></select><label class="dim"><input type="checkbox" id="rs"> Com especialidade (dificuldade 3)</label><button class="b" data-a="roll">Rolar</button></div><div id="rres">${rollHTML()}</div></div>
+<div class="card"><h2>Vantagens (Pontos de Tensão)</h2>${VANT.filter(v => !v[2] || c.sp.includes(v[2])).map((v, i) => `<div class="mk"><span><b>${v[0]}</b> <span class="dim">${v[1] === 'var' ? 'custo livre' : v[1] + ' PT'} — ${v[3]}</span></span>${v[1] === 'var' ? '<input type="number" class="vc" min="1" value="1" style="width:60px">' : ''}<button class="sm" data-a="buy" data-i="${VANT.indexOf(v)}" ${v[1] !== 'var' && s.ten < (v[0] === 'Choque de Realidade' && c.k && !s.km ? 5 : v[1]) ? 'disabled' : ''}>Comprar</button></div>`).join('')}
+<div class="row" style="margin-top:8px"><input type="text" id="cn" placeholder="Outro item/benefício comprado" style="flex:2"><input type="number" id="cc" placeholder="PT" min="0" style="width:70px"><button data-a="cbuy">Comprar</button></div>
+<h3 style="margin-top:12px">Comprados</h3>${s.buy.map((b, i) => `<div class="mk"><span>✔ ${E(b.n)} <span class="dim">(${b.c} PT)</span></span><button class="sm" data-a="bu" data-i="${i}">usado ✕</button></div>`).join('') || '<span class="dim">Nada ainda.</span>'}</div>
+<div class="card"><h2>Inventário</h2>${s.inv.map((x, i) => `<div class="mk"><span>• ${E(x)}</span><button class="sm" data-a="ir" data-i="${i}">✕</button></div>`).join('')}<div class="row"><input type="text" id="ni" placeholder="Novo item" style="flex:1"><button data-a="ia">Adicionar</button></div>
+<h3 style="margin-top:12px">Anotações</h3><textarea id="nt">${E(s.nt)}</textarea></div>
+<div class="card"><h2>Habilidade</h2><b>${E(c.ab[0])}</b><div class="dim">${E(c.ab[1])}</div></div>
+<div class="card"><details><summary>Quem é você · segredos · psicológico</summary><p><b>História:</b> ${E(c.bs)}</p><p><b>Segredo:</b> ${E(c.sec)}</p><p><b>Motivo para matar:</b> ${E(c.mt)}</p><p><b>Apegos:</b> ${c.ap.map(E).join(' · ')}</p><p><b>Maior medo:</b> ${E(c.fear)}</p>${c.q ? `<p><i>“${E(c.q)}”</i></p>` : ''}
+<p class="dim">Apegos em cena rendem PT: item icônico +1, relação afetiva +2, desejo obscuro +3.</p></details></div>`;
+            bind(id, c, s)
+        }
+        function rollHTML() { if (!lastRoll) return '<p class="dim">Nenhuma rolagem ainda.</p>'; const r = lastRoll; return r.d.map(v => `<span class="die ${v >= r.t ? 's' : 'f'}">${v}</span>`).join('') + `<p><b>${r.s}</b> sucesso(s) · ${r.f} falha(s) — precisa de ${r.n}: <b class="${r.s >= r.n ? 'vivo' : 'warn'}">${r.s >= r.n ? 'SUPEROU' : 'FRACASSOU'}</b></p>${r.f && !r.ap ? `<button data-a="loss">Descontar ${r.f} falha(s) dos dados comuns</button>` : ''}` }
+        function bind(id, c, s) {
+            const sv = () => { save(id); render() };
+            $('#back').onclick = () => open({ t: view.m ? 'm' : 'login' }); const mk = $('#mask'); if (mk) mk.onclick = () => { view.cf = true; render() }; const no = $('#mkno'); if (no) no.onclick = () => { view.cf = false; render() }; const ok = $('#mkok'); if (ok) ok.onclick = () => { view.cf = false; s.km = true; s.k.ph += s.ten; s.ten = 0; s.give = s.dice; s.dice = 0; sv() }; const ar = $('#arq'); if (ar) ar.onclick = () => { if (s.k.dice >= 2) { s.k.dice -= 2; s.cl = (s.cl || 0) + 1; sv() } };
+            document.querySelectorAll('[data-a]').forEach(b => b.onclick = () => {
+                const a = b.dataset.a, i = +b.dataset.i, k = b.dataset.k;
+                if (a === 'inc') s[k] = Math.min(+b.dataset.max, s[k] + 1); else if (a === 'dec') s[k] = Math.max(0, s[k] - 1); else if (a === 'st') s.st = b.dataset.v;
+                else if (a === 'ma') s.mk.push({ t: $('#mt').value, v: 1 }); else if (a === 'mv') s.mk[i].v = Math.max(1, Math.min(6, s.mk[i].v + +b.dataset.d)); else if (a === 'mr') s.mk.splice(i, 1);
+                else if (a === 'roll') { const n = +$('#rn').value || 1, t = $('#rs').checked ? 3 : 4, d = Array.from({ length: n }, () => 1 + Math.floor(Math.random() * 6)), sc = d.filter(v => v >= t).length; lastRoll = { d, t, n: +$('#rr').value, s: sc, f: n - sc, ap: false }; return render() }
+                else if (a === 'loss') { s.dice = Math.max(0, s.dice - lastRoll.f); lastRoll.ap = true }
+                else if (a === 'buy') {
+                    const v = VANT[i]; let cost = v[1]; if (cost === 'var') { cost = Math.min(s.ten, +b.parentNode.querySelector('.vc').value || 0); if (cost <= 0) return } if (v[0] === 'Choque de Realidade' && c.k && !s.km) cost = 5; if (s.ten < cost) return; s.ten -= cost; if (v[0] === 'Choque de Realidade') s.dice = Math.min(6, s.dice + 1);
+                    if (v[0] === 'Cuidar de Feridas') { let r = cost; s.mk.filter(m => m.t === 'Ferida').forEach(m => { const x = Math.min(m.v, r); m.v -= x; r -= x }); s.mk = s.mk.filter(m => m.t !== 'Ferida' || m.v > 0) } else s.buy.push({ n: v[0], c: cost })
+                }
+                else if (a === 'cbuy') { const n = $('#cn').value.trim(), cc = +$('#cc').value || 0; if (!n || cc > s.ten) return; s.ten -= cc; s.buy.push({ n, c: cc }) }
+                else if (a === 'bu') s.buy.splice(i, 1); else if (a === 'ir') s.inv.splice(i, 1); else if (a === 'ia') { const v = $('#ni').value.trim(); if (v) s.inv.push(v) }
+                sv()
+            });
+            const nt = $('#nt'); nt.oninput = () => { s.nt = nt.value; save(id) }
+        }
+        function killer(c, s) {
+            const k = s.k, K = c.k; k.th = k.th || K.th; k.th2 = k.th2 || ''; k.n1 = k.n1 ?? K.nb; k.n2 = k.n2 ?? 0; k.ua = k.ua || []; const mx = Math.max(k.n1, k.n2), T = TH[k.th], T2 = k.th2 && TH[k.th2];
+            const nbo = (v, z) => `<select data-nb="${z}" style="width:70px">${[0, 1, 2, 3, 4, 5, 6].map(n => `<option ${n === v ? 'selected' : ''}>${n}</option>`).join('')}</select>`, tho = (v, z, em) => `<select data-th="${z}">${em ? '<option value="">— nenhuma —</option>' : ''}${Object.keys(TH).map(n => `<option ${n === v ? 'selected' : ''}>${n}</option>`).join('')}</select>`;
+            $('#app').innerHTML = `<div class="row"><button id="back">${view.m ? '← Mestre' : 'Sair'}</button><span class="sp"></span><button id="unm">↩ Voltar a sobrevivente</button></div>
+<div class="card" style="border-color:var(--red)"><h1 style="font-size:2rem">🔪 ${E(c.n)} — Assassino</h1>${s.give ? `<p class="warn">Entregue ${s.give} dados aos outros Intérpretes. <button class="sm" id="gv">Já entreguei</button></p>` : ''}
+<div class="row">Ameaça principal ${tho(k.th, 1)} NB ${nbo(k.n1, 1)}</div><div class="row" style="margin-top:6px">Segunda ameaça ${tho(k.th2, 2, 1)} NB ${nbo(k.n2, 2)}</div>
+<p class="dim">Pelo livro: pilha inicial ${k.n1 + k.n2} dados · Testes de Susto ${Math.max(0, 7 - mx)} por Encontro · Armadilhas grátis ${Math.max(0, 7 - mx)} · Etapa de Fuga base ${mx + 1} · PH inicial ${k.n1} · Passos de Suspense ${Math.max(0, 4 - mx)} (+1 por 4 PH). <button class="sm" id="rst">Aplicar valores iniciais</button></p></div>
+<div class="card"><h2>Recursos</h2>${cnt('🎲 Dados do Assassino', 'kd', k.dice)}${cnt('💀 Pontos de Horror', 'kp', k.ph)}${cnt('😱 Sustos restantes', 'ks', k.su)}</div>
+<div class="card"><h2>Ameaça ${E(k.th)}</h2><p><b>Passiva:</b> ${E(T[0])}</p><p><b>Ações únicas disponíveis:</b> ${E(T[1])}</p><p><b>Intento único:</b> ${E(T[2])}</p>${T2 ? `<hr style="border-color:var(--ln)"><h2>Ameaça ${E(k.th2)}</h2><p><b>Ações únicas:</b> ${E(T2[1])}</p><p><b>Intento único:</b> ${E(T2[2])}</p>` : ''}</div>
+<div class="card"><h2>Ações gerais</h2><div class="row">${[['Assustar', 'ks', -1, 'susto'], ['Matar (só quem tem menos dados)', 'kd', -2, 'dados'], ['Escapar', 'kd', 1, 'dados'], ['Dificultar (+1 Etapa de Fuga)', 'kp', -4, 'PH'], ['Mutilar (6 no Ferir)', 'kp', 4, 'PH'], ['Susto opcional (Intérprete se contorceu)', 'kp', 1, 'PH']].map(a => `<button data-k="${a[1]}" data-d="${a[2]}">${a[0]} ${a[2] > 0 ? '+' : ''}${a[2]} ${a[3]}</button>`).join('')}</div><p class="dim">Ferir: role 1 dado — 6 mata; senão vira dado marcador de ferida (soma) e +1 Sequela.</p></div>
+<div class="card"><h2>Ações únicas (★ = as suas, escolha 1 de cada Ameaça)</h2>${UA.map(a => `<div class="mk"><button class="sm" data-u="${a[0]}">${k.ua.includes(a[0]) ? '★' : '☆'}</button><span><b>${a[0]}</b> <span class="dim">${a[2]}</span></span><button class="sm" data-k="kp" data-d="${a[1] ? -a[1] : 1}" ${a[1] && k.ph < a[1] ? 'disabled' : ''}>${a[1] ? '−' + a[1] + ' PH' : '+1 PH'}</button></div>`).join('')}</div>
+<div class="card"><h2>Intentos Horríveis (+PH)</h2>${INT.map(x => `<div class="mk"><span>${x[0]}</span><button class="sm" data-k="kp" data-d="${x[1]}">+${x[1]} PH</button></div>`).join('')}</div>
+<div class="card"><h2>Depois de revelado</h2><div class="mk"><span>Converter qualidade neutra em desfavorável (2 dados)</span><button class="sm" data-k="kd" data-d="-2" ${k.dice < 2 ? 'disabled' : ''}>−2 dados</button></div>
+<p class="dim">No início do seu turno num Encontro, aponte um apego descoberto de uma Sobrevivente viva:</p><div class="row"><button class="sm" data-k="kp" data-d="1">Item icônico +1 PH</button><button class="sm" data-k="kp" data-d="3">Relação afetiva +3 PH</button><button class="sm" data-k="kp" data-d="6">Desejo obscuro +6 PH</button></div></div>
+<div class="card"><h2>Poderes especiais (★ = o seu)</h2>${POD.map(p => `<div class="mk"><button class="sm" data-o="${p[0]}">${k.own.includes(p[0]) ? '★' : '☆'}</button><span>${E(p[0])}</span><button class="sm" data-k="kp" data-d="-${p[1]}" ${k.ph < p[1] ? 'disabled' : ''}>Usar −${p[1]} PH</button></div>`).join('')}</div>
+<div class="card"><p class="dim">Dica do livro: deixe sempre uma final girl para trás. Com dois Vultos, podem compartilhar a mesma pilha e um pode fingir morrer para ajudar o outro.</p></div>`;
+            const sv = () => { save(c.id); render() }; $('#back').onclick = () => open({ t: view.m ? 'm' : 'login' }); $('#unm').onclick = () => { s.km = false; sv() };
+            const g = $('#gv'); if (g) g.onclick = () => { s.give = 0; sv() }; $('#rst').onclick = () => { k.dice = k.n1 + k.n2; k.ph = k.n1; k.su = Math.max(0, 7 - mx); sv() };
+            document.querySelectorAll('[data-nb]').forEach(e => e.onchange = () => { k['n' + e.dataset.nb] = +e.value; sv() }); document.querySelectorAll('[data-th]').forEach(e => e.onchange = () => { k[e.dataset.th === '1' ? 'th' : 'th2'] = e.value; sv() });
+            const M = { kd: 'dice', kp: 'ph', ks: 'su' };
+            document.querySelectorAll('[data-k]').forEach(b => b.onclick = () => {
+                const key = M[b.dataset.k], d = b.dataset.d !== undefined ? +b.dataset.d : null;
+                if (b.dataset.a === 'inc') k[key]++; else if (b.dataset.a === 'dec') k[key] = Math.max(0, k[key] - 1); else k[key] = Math.max(0, k[key] + d); sv()
+            });
+            document.querySelectorAll('[data-o]').forEach(b => b.onclick = () => { const n = b.dataset.o, i = k.own.indexOf(n); i < 0 ? k.own.push(n) : k.own.splice(i, 1); sv() });
+            document.querySelectorAll('[data-u]').forEach(b => b.onclick = () => { const n = b.dataset.u, i = k.ua.indexOf(n); i < 0 ? k.ua.push(n) : k.ua.splice(i, 1); sv() })
+        }
+
+        login(); init();
+    </script>
+</body>
+
+</html>
