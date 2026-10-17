@@ -250,6 +250,261 @@
             font-family: var(--ty);
             color: var(--ink)
         }
+
+        .hud {
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            background: rgba(10, 9, 16, .94);
+            backdrop-filter: blur(6px);
+            border: 1px solid var(--ln);
+            border-radius: 12px;
+            padding: 10px;
+            margin: 8px 0 10px
+        }
+
+        .av {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--rd);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font: 20px var(--di);
+            flex: none
+        }
+
+        .nm {
+            font: 400 20px var(--di)
+        }
+
+        .st4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-top: 8px
+        }
+
+        .st4>div {
+            background: var(--c2);
+            border: 1px solid var(--ln);
+            border-radius: 8px;
+            text-align: center;
+            padding: 4px
+        }
+
+        .st4 small {
+            display: block;
+            font: 10px var(--ty);
+            color: var(--dim)
+        }
+
+        .st4 b {
+            font: 400 20px var(--ty)
+        }
+
+        .tabs {
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+            margin-bottom: 10px
+        }
+
+        .tabs button,
+        #nav button {
+            white-space: nowrap;
+            flex: 1
+        }
+
+        .act {
+            background: var(--rd) !important;
+            border-color: var(--red) !important
+        }
+
+        #nav {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 8px
+        }
+
+        .pips {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap
+        }
+
+        .pip {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 2px solid var(--ln);
+            background: var(--c2);
+            padding: 0
+        }
+
+        .pip.ro {
+            cursor: default;
+            display: inline-block
+        }
+
+        .pip.on.dice {
+            background: var(--moon);
+            border-color: var(--moon)
+        }
+
+        .pip.on.fuga {
+            background: var(--ok);
+            border-color: var(--ok)
+        }
+
+        .pip.on.ten {
+            background: var(--org);
+            border-color: var(--org)
+        }
+
+        .pip.on.wound {
+            background: var(--red);
+            border-color: var(--red)
+        }
+
+        .trk {
+            margin: 0 0 14px
+        }
+
+        .trh {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-family: var(--ty);
+            font-size: 13px
+        }
+
+        .stp {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .stp b,
+        .mval {
+            font: 400 20px var(--ty);
+            min-width: 30px;
+            text-align: center
+        }
+
+        .hb {
+            padding: 0 7px;
+            border-radius: 50%;
+            font-size: 12px;
+            margin-left: 6px;
+            border-color: var(--org);
+            color: var(--org)
+        }
+
+        .helpbox {
+            background: var(--c2);
+            border-left: 3px solid var(--org);
+            border-radius: 6px;
+            padding: 8px 10px;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: var(--dim)
+        }
+
+        .av {
+            overflow: hidden;
+            cursor: pointer
+        }
+
+        .av img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .av.big {
+            width: 80px;
+            height: 80px
+        }
+
+        .av.sm2 {
+            width: 30px;
+            height: 30px;
+            font-size: 14px
+        }
+
+        .ab {
+            border: 1px solid var(--ln);
+            border-radius: 8px;
+            padding: 8px;
+            margin-bottom: 6px
+        }
+
+        .ab.used {
+            opacity: .55
+        }
+
+        .card h2 {
+            border-bottom: 1px solid var(--ln);
+            padding-bottom: 6px;
+            margin-bottom: 10px
+        }
+
+        .vulto {
+            border-color: var(--rd)
+        }
+
+        .alert {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid var(--red);
+            border-radius: 8px;
+            background: rgba(164, 20, 31, .15)
+        }
+
+        .dice {
+            margin: 8px 0
+        }
+
+        .die {
+            width: 46px;
+            height: 46px;
+            font-size: 22px
+        }
+
+        .die.s {
+            box-shadow: 0 0 12px rgba(79, 155, 106, .45)
+        }
+
+        .fq {
+            border-bottom: 1px solid var(--ln);
+            padding: 8px 0
+        }
+
+        .fq summary {
+            font-size: 15px
+        }
+
+        .mk {
+            border-bottom: 1px dashed var(--ln);
+            padding: 5px 0
+        }
+
+        .act.vivo {
+            background: var(--ok) !important
+        }
+
+        .act.ferido {
+            background: var(--org) !important
+        }
+
+        @media(min-width:760px) {
+            .w {
+                padding-top: 24px
+            }
+        }
     </style>
 </head>
 
@@ -258,6 +513,7 @@
         <div class="top">
             <h1>RPG PÂNICO</h1><small>Mesa · Halloween 2026</small>
         </div>
+        <div id="nav"></div>
         <div id="app"></div>
     </div>
     <script>
@@ -274,9 +530,11 @@
                 id: 'vivian', n: 'Vivian Beaumont', p: 'Carina', c: 'Esbelto', a: '17', pr: 'ela/dela', f: 'Sereia, cheia de corrente', sp: ['Carisma', 'Vigor'], ab: ['Não perco a Pose!', 'Uma vez por Encontro, re-role seus dados ao Vazar Dali.'], bs: 'Ex-nerd vítima de bullying que se reinventou na Grécia e voltou como popular, apagando seu passado (subornou um professor).', sec: 'Seu passado nerd pode destruir sua reputação; ainda ama HQs.', ap: ['Colar de ouro dado pela mãe', '—', 'Sua HQ favorita, guardada em segredo'], fear: 'Ser exposta e perder tudo que construiu', mt: 'Acabar com quem sabe quem ela era antes', inv: [], q: '', pw: 'synthima', d: 6,
                 k: { th: 'Carniceira', nb: 3, dice: 3, ph: 3, su: 4, ar: 4, fu: 4, pa: 'Ao escapar de um Encontro, 1 dado extra por Sobrevivente com ferimento superior a 3.', ac: 'Devorar, Segurar, Acidentar', it: '+1 PH sempre que usarem Cuidar de Feridas.', own: ['Ataque do Coração'] }
             },
-            { id: 'kaleb', n: 'Kaleb / K', p: 'Italo Gabriel', c: 'Relaxado', a: '17', pr: 'Nós somos um', f: 'IT (a Coisa)', sp: ['Carisma', 'Vigor'], ab: ['Posso até tentar! e Olé!', 'Carisma: 1x/Encontro use vantagem de especialidade que não possui (teste dela; se falhar, perde os PT). Vigor: 1x/Encontro ao receber ferida, re-role o dado marcador.'], bs: 'Distraído e brincalhão até um trauma aos 12 anos. Tem uma segunda personalidade, K, fria e violenta.', sec: 'K assume o controle em pânico e já feriu (talvez matou) pessoas. Kaleb esconde isso no caderno.', ap: ['Caderno preto com caneta azul e preta', '—', 'Sua outra personalidade (K) e as mortes pelas quais ela é responsável'], fear: 'Descobrir que K matou alguém que Kaleb não queria', mt: 'K gosta de matar', inv: [], q: '', pw: 'K', d: 6 },
+            { id: 'kaleb', n: 'Kaleb / K', p: 'Italo Gabriel', c: 'Relaxado', a: '17', pr: 'Nós somos um', f: 'IT (a Coisa)', sp: ['Carisma', 'Vigor'], ab: ['Posso até tentar! e Olé!', 'Carisma: 1x/Encontro use vantagem de especialidade que não possui (teste dela; se falhar, perde os PT). Vigor: 1x/Encontro ao receber ferida, re-role o dado marcador.'], bs: 'Distraído e brincalhão até um trauma aos 12 anos. Tem uma segunda personalidade, K, fria e violenta.', sec: 'K assume o controle em pânico e já feriu (talvez matou) pessoas. Kaleb esconde isso no caderno.', ap: ['Caderno preto com caneta azul e preta', '—', 'Sua outra personalidade (K) e as mortes pelas quais ela é responsável'], fear: 'Descobrir que K matou alguém que Kaleb não queria', mt: 'K gosta de matar', inv: [], q: '', pw: 'k', d: 6 },
             { id: 'shaun', n: 'Shaun', p: 'Diogo Henrique', c: 'Cética', a: '21', pr: 'ele/dele', f: 'Michael Jackson (Smooth Criminal)', sp: ['Astúcia', 'Vigor'], ab: ['Impossível!', 'Re-role todo Teste de Susto uma vez.'], bs: 'Fechado no próprio mundinho, fã de Michael Jackson e de filmes de terror. Vive com seu gato preto que é branco.', sec: 'Fez um altar para Michael Jackson, mostrou na escola e foi caçoado.', ap: ['Disco original de Thriller', 'Gato preto que é branco', 'Ir ao túmulo de Michael Jackson'], fear: 'Perder o gatinho que ama', mt: 'Alguém quebrar seu disco de Thriller', inv: ['Tesoura', 'Telefone'], q: '', pw: 'thriller', d: 6 },
             { id: 'martha', n: 'Martha', p: 'kaisi', c: 'Inocente', a: '16', pr: 'ela/dela', f: 'Hatsune Miku', sp: ['Astúcia', 'Carisma'], ab: ['Carência (Me Ajudem!)', 'Uma vez por sessão, quem usar Ajudar Alguém em você não perde os dados doados.'], bs: 'Filha de pai rico e ausente; mãe desaparecida. Perfeccionista que se afunda nos estudos. Seus únicos amigos: Vivian e Erik.', sec: 'É imensamente invejosa e rancorosa com quem tem o que ela não tem.', ap: ['Pelúcia de tubarão', 'Vivian e Erik', 'Aceitação do pai'], fear: 'Falhar com as expectativas do pai', mt: 'mato nn', inv: [], q: '', pw: 'miku', d: 6 },
+            { id: 'nathan', n: 'Nathan Fitzgerald', p: 'Daniel', c: 'Atleta', a: '20', pr: 'ele/dele', f: 'Rei', sp: ['Força', 'Astúcia'], ab: ['Tudo por Você!', 'Ao Arriscar Tudo para salvar outra pessoa, descarte só metade dos seus dados.'], bs: 'Atleta sociável que conhece todo mundo. Namora o Nick e ficou mais protetor depois da tragédia do Natal, mesmo achando as teorias dele exageradas.', sec: 'Tem um serial killer na família.', ap: ['Aliança de namoro', 'Nick, o namorado', 'Observar as pessoas e ver as vidas delas serem inferiores à sua'], fear: 'Perder o Nick', mt: 'Proteger o Nick', inv: [], q: 'Tá certo, obrigado viu', pw: 'nick', d: 6 },
+            { id: 'nicholas', n: 'Nicholas Leatherwood', p: 'Mário Neto', c: 'Nerd', a: '20', pr: 'ele/dele', f: 'Vampiro', sp: ['Astúcia'], ab: ['Deixa Comigo!', 'Uma vez por Encontro, reduza em 1 o custo de uma Vantagem comprada por outra pessoa.'], bs: 'O "cara do PC", engraçado e extrovertido cansado. Namora Nathan. Depois de perder um grande amigo na tragédia do Natal, ficou paranoico com assassinos e maratonou casos e filmes.', sec: 'Escreveu algumas cartas para um assassino conhecido.', ap: ['Aliança de namoro', 'Nathan Fitzgerald, o namorado', 'Silêncio mórbido'], fear: 'Perder o Nathan Fitzgerald', mt: 'Proteger o Nathan Fitzgerald', inv: [], q: 'Mas tá tudo bem', pw: 'nathan', d: 6 },
             { id: 'aisha', n: 'Aisha Elowen', p: 'Enid/Clara', c: 'Popular', a: '17', pr: 'ela/dela', f: 'Freddy Fazbear improvisado', sp: ['Carisma', 'Agilidade', 'Vigor'], ab: ['Popularidade', 'Sabe conquistar a confiança das pessoas: obtém informações e convence alguém a ajudar com mais facilidade.'], bs: 'Popular, carismática, esconde o medo atrás de piadas. Conheceu o grupo na escola.', sec: 'Mantém há 2 anos uma identidade anônima na internet com que manipula amizades; alguém invadiu a conta e está vazando tudo.', ap: ['Seu celular', 'Seus amigos mais próximos', 'Sua reputação'], fear: 'Segredo descoberto e acabar sozinha', mt: '—', inv: ['Celular', 'Maquiagem', 'Canivete'], q: 'Quer me matar? Entra na fila.', pw: 'freddy', d: 6 }];
         const TH = {
             'Amaldiçoado': ['Dados marcadores (exceto ferida) começam com +1.', 'Possuir, Amaldiçoar, Infectar, Acidentar', '+2 PH ao colocar um Dado Marcador em uma Sobrevivente.'],
@@ -294,14 +552,35 @@
             'Perseguidor': ['Se a Sobrevivente tem ferida maior que 3, o Vazar Dali dela tem dificuldade +1.', 'Devorar, Segurar, Restringir, Acidentar', '+1 PH sempre que alguém falhar todos os dados num Vazar Dali.']
         };
         const UA = [['Acidentar', 4, 'Ao usar susto fora de Encontro, use Ferir em quem falhou.'], ['Amaldiçoar', 3, 'Dado Marcador oculto num recurso recém-encontrado; evolui a cada uso.'], ['Destruir', 4, 'Destrói um recurso ou qualidade favorável (grátis em Cena de Suspense).'], ['Devorar', 0, 'Quando alguém tirar 6, ganhe +1 PH (ela mantém o sucesso).'], ['Incapacitar', 4, 'Ao ferir, desmarca uma especialidade até Tomar Jeito.'], ['Infectar', 4, 'Dado Marcador de infecção que piora a cada cena até a morte.'], ['Possuir', 0, 'Dado Marcador sobe a cada falha da vítima; no 6 ela mata alguém por você.'], ['Restringir', 0, 'Dado Marcador (começa em 3): dificuldade +1 nos testes da vítima.'], ['Segurar', 5, 'Ao ferir sem matar, imobiliza: sem Dados de Fuga e +1 ferida por turno.']];
+        const QUAL = {
+            fav: [['Arma de Emergência', 'Permite atacar usando Agilidade; com sucesso, o Assassino perde 3 dados. Só pode ser usada dessa forma uma vez.'], ['Arma Perfeita', 'Ao atacar, remove 1 dado do Assassino por resultado ímpar de sucessos.'], ['Baú do Caçador', 'Permite comprar a vantagem Caçar Recursos usando Pontos de Tensão, uma vez por ambiente.'], ['Esconderijo Acovardado', 'Uma Sobrevivente pode gastar uma ação para se esconder e ficar protegida das ações do Assassino por um turno.'], ['Escotilha', 'Reduz em 1 a Etapa de Fuga necessária para a primeira Sobrevivente que escapar.'], ['Ponto Fraco', 'O Assassino perde metade dos dados se tiver 14 ou mais.'], ['Quarto Seguro', 'Reduz em 1 o custo de Pontos de Tensão da vantagem Choque de Realidade.'], ['Símbolos de Proteção', 'As ações e habilidades do Assassino que custam Pontos de Horror ficam 2 pontos mais caras nesse ambiente.'], ['Suprimentos', 'Dobra a cura de feridas; também permite gastar 3 Pontos de Tensão para remover uma Sequela de outra Sobrevivente.'], ['Morte Iminente', 'Permite gastar Pontos de Tensão em vantagens durante o encontro, exceto Choque de Realidade.']],
+            des: [['Armas Bizarramente Grandes', 'Uma vez no encontro, o Assassino pode realizar uma ação extra de Ferir no turno.'], ['Chão Dificultoso', 'Os testes para Vazar Dali ficam complexos.'], ['Corredor Apertado', 'Depois que metade das Sobreviventes escapar, a fuga exige mais uma Etapa.'], ['Entrada Surpresa', 'No primeiro encontro nesse ambiente, cada Sobrevivente entrega 1 dado ao Assassino; os dados restantes obtidos assim são descartados ao fim do encontro.'], ['Escuro', 'Os testes para Partir para Cima ficam complexos.'], ['Estilhaços e Cacos', 'Ações das Sobreviventes que não sejam Vazar Dali causam 1 Ferida a elas no fim do turno.']],
+            neu: [['Claustrofobia Generalizada', 'Ambiente apertado; dificulta a fuga, mas também pode impedir ações do Assassino.'], ['Confusão', 'Inverte a ordem de iniciativa; a ação Matar custa o dobro no primeiro turno.'], ['Cozinha', 'Facilita a ação Partir para Cima, mas dá 1 dado ao Assassino ao entrar em um encontro ali.'], ['Desastre Iminente', 'Todos, incluindo o Assassino, descartam 1 dado no início dos turnos.'], ['Equipamento Médico', 'Os dados descartados durante o encontro vão para uma pilha separada e depois são distribuídos igualmente entre Assassino e Sobreviventes.'], ['Rivais em Comum', 'Todos ganham 1 Ferida ao fim dos turnos; o Assassino não pode usar a ação Matar.'], ['Presente Macabro', 'No próximo encontro, a primeira pessoa afetada pelo Assassino recebe um marcador semelhante ao de Possuir; ao completá-lo, ganha um dado.'], ['Recurso Desesperado', 'As Sobreviventes podem descartar dados voluntariamente para reduzir também os dados do Assassino, mas ele ganha 1 Ponto de Horror por dado descartado.'], ['Surto de Adrenalina', 'No início de cada rodada, as Sobreviventes ganham 1 Ponto de Tensão e o Assassino ganha 2 Pontos de Horror.'], ['Temperatura Insuportável', 'Todos os testes no ambiente ficam complexos; ações do Assassino que custam dados aumentam de custo em 2.']]
+        };
+        const HELP = {
+            pil: '<b>Dados comuns</b>: sua pilha (máx. 6). Perde ao falhar; recupera com Choque de Realidade ou Recuperar o Fôlego. <b>Dados de Fuga</b>: acumule até igualar as Etapas de Fuga do Encontro para escapar. <b>Pontos de Tensão</b>: ganhe com riscos clichês de filme de terror e Apegos; gaste em Vantagens (máx. 10). Toque nas bolinhas ou use + e −. As Feridas são calculadas pelos dados marcadores.',
+            mar: 'Dados marcadores são condições que evoluem. Ao receber uma Ferida, adicione um marcador "Ferida" com o valor do dado; novas feridas somam. Chegou a 6, a personagem morre. Sequela, Infecção, Possessão e Restrição também usam marcador. Ajuste o valor com + e −.',
+            est: 'Marque se sua personagem está viva, ferida ou morta. O mestre vê esse estado no resumo da mesa.',
+            hab: 'Suas habilidades de arquétipo. Muitas valem 1x por Encontro ou por sessão: use "Marcar usada" e "Recarregar" quando começar um novo Encontro. Depois de sobreviver, você ganha uma Cicatriz: adicione a nova habilidade pelo formulário.',
+            rol: 'Escolha quantos dados da pilha arriscar e role. Sucesso = 4, 5 ou 6 (3+ com especialidade). Risco Comum precisa de 1 sucesso; Complexo, de 2. Depois use "Descontar falhas" para tirar os dados perdidos da pilha. Teste de Susto rola 1 dado.',
+            van: 'Gaste Pontos de Tensão para comprar Vantagens. Só aparecem as permitidas pelas suas especialidades. Cuidar de Feridas pede quanto PT gastar (reduz suas Feridas no mesmo valor). Choque de Realidade dá +1 dado. Também dá para registrar compras livres.',
+            com: 'Itens e benefícios comprados com PT. Toque em "usado" quando gastar.',
+            inv: 'Seus itens. Já começam com os da ficha; adicione ou remova durante a sessão.',
+            nt: 'Espaço livre para pistas, suspeitas e lembretes. Salva sozinho.',
+            cla: 'Clamores são qualidades do ambiente que as Sobreviventes conquistam no Rito de Iniciação, no começo da sessão. Escolha na lista e adicione; o efeito resumido fica visível. Também aceita clamores personalizados. Remova quando deixarem de valer.',
+            foto: 'Toque no círculo da foto (ou em "Trocar foto") para escolher uma imagem. Ela é reduzida e salva junto com a ficha.',
+            vul: 'Só para o Vulto. "Tudo arquitetado" gasta 2 dados do Assassino para dar 1 clamor extra à Diretora. "Tirar a Máscara" revela você como Assassino (pede confirmação).',
+            mcl: 'Aqui ficam os clamores da Diretora (desfavoráveis e neutros) e os escolhidos pelos jogadores. Adicione conforme a sessão avança.'
+        };
         const VANT = [['Cuidar de Feridas', 'var', null, 'Gaste PT para reduzir Feridas no mesmo valor (1x/Encontro).'], ['Tomar Jeito', 3, null, 'Recupera uma especialidade incapacitada.'], ['Choque de Realidade', 6, null, '+1 dado comum na pilha.'], ['Adrenalina', 2, 'Vigor', 'Reduz a próxima ferida em 1.'], ['Caçar Recursos', 3, 'Astúcia', 'Recebe um Recurso novo.'], ['Preparar para a Próxima', 3, 'Agilidade', '+1 Dado de Fuga no próximo Vazar Dali.'], ['Ele Não Espera por Mim', 3, 'Força', 'Sucesso automático no próximo Partir para Cima.'], ['Ombro Amigo', 'var', 'Carisma', 'Doe PT a outra Sobrevivente.']];
         const POD = [['Você Já Sofreu o Suficiente', 2], ['Eu Vejo Cada Passo Seu', 2], ['Banho de Sangue', 2], ['Corte Profundo', 2], ['Jumpscare', 2], ['Trauma', 3], ['Isso Vai Deixar Marca', 4], ['Ataque do Coração', 3], ['Surpresa!', 6], ['Eu Voltarei', 3], ['Sua Hora Chegou', 3], ['Não Há Saída', 4], ['Cansei de Brincar', 5], ['Mudança de Planos', 5], ['Fim da Esperança', 5], ['Caiam na Teia', 5], ['Indiferença Perturbadora', 2]];
         const INT = [['Sobrevivente morre em Cena de Suspense', 5], ['Todas tentam escapar no 1º turno', 4], ['Sobrevivente cai em armadilha', 2], ['Falha em Teste de Susto', 1], ['Uso de Choque de Realidade', 1], ['Sobrevivente sai ferida de Encontro', 1], ['Sobrevivente morre em Encontro', 1], ['Sobreviventes se beijam', 1]];
         const $ = s => document.querySelector(s), E = s => String(s ?? '').replace(/[&<>"]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
-        let db = null, view = { t: 'login' }, S = {}, unsub = null, tm = {}, lastRoll = null, mem = {};
-        const def = c => ({ dice: c.d, fuga: 0, ten: 0, mk: [], buy: [], inv: [...c.inv], nt: '', st: 'vivo', km: false, k: c.k ? { dice: c.k.dice, ph: c.k.ph, su: c.k.su, own: [...c.k.own] } : null });
-        function save(id) { if (!db) { return } clearTimeout(tm[id]); tm[id] = setTimeout(() => db.collection('chars').doc(id).set({ s: JSON.stringify(S[id]) }).catch(() => { }), 350) }
-        function st(id) { return S[id] || (S[id] = def(C.find(c => c.id === id))) }
+        function lls() { try { return JSON.parse(localStorage.getItem('panico_S_v1')) || {} } catch (e) { return {} } } function ls() { try { localStorage.setItem('panico_S_v1', JSON.stringify(S)) } catch (e) { } }
+        let db = null, view = { t: 'login' }, last = null, S = lls(), unsub = null, tm = {}, lastRoll = null, mem = {};
+        const def = c => ({ ab: [{ n: c.ab[0], d: c.ab[1], u: false }], qs: [], pic: '', dice: c.d, fuga: 0, ten: 0, mk: [], buy: [], inv: [...c.inv, ...(c.ap[0] && c.ap[0] !== '—' && !c.inv.some(i => { const a = c.ap[0].toLowerCase(), b = i.toLowerCase(); return a.includes(b) || b.includes(a) }) ? [c.ap[0]] : [])], nt: '', st: 'vivo', km: false, k: c.k ? { dice: c.k.dice, ph: c.k.ph, su: c.k.su, own: [...c.k.own] } : null });
+        function save(id) { ls(); if (!db) { return } clearTimeout(tm[id]); tm[id] = setTimeout(() => db.collection('chars').doc(id).set({ s: JSON.stringify(S[id]) }).catch(() => { }), 350) }
+        function st(id) { const c = C.find(c => c.id === id), s = S[id] || (S[id] = def(c)); if (!s.ab) s.ab = c.ab ? [{ n: c.ab[0], d: c.ab[1], u: false }] : []; if (!s.qs) s.qs = []; if (s.pic === undefined) s.pic = ''; return s }
         function parse(d) { try { return JSON.parse(d.data().s) } catch (e) { return null } }
         async function init() { try { await claude.use('user'); db = await claude.use('db') } catch (e) { db = null } if (view.t !== 'login') render() }
         function login() {
@@ -314,63 +593,93 @@ ${db ? '' : '<p class="dim">Sem banco compartilhado: dados só neste navegador.<
         function open(v) {
             view = v; if (unsub) { unsub(); unsub = null }
             if (db) {
-                const col = db.collection('chars'); if (v.t === 'm') unsub = col.onSnapshot(q => { q.docs.forEach(d => { const x = parse(d); if (x) S[d.id] = x }); render() });
-                else if (v.t === 's') unsub = col.doc(v.id).onSnapshot(d => { if (d.metadata.hasPendingWrites) return; const x = d.exists && parse(d); if (x) { S[v.id] = x; const a = document.activeElement; if (!a || !/INPUT|TEXTAREA/.test(a.tagName)) render() } })
+                const col = db.collection('chars'); if (v.t === 'm') unsub = col.onSnapshot(q => { q.docs.forEach(d => { const x = parse(d); if (x) S[d.id] = x }); ls(); render() });
+                else if (v.t === 's') unsub = col.doc(v.id).onSnapshot(d => { if (d.metadata.hasPendingWrites) return; const x = d.exists && parse(d); if (x) { S[v.id] = x; ls(); const a = document.activeElement; if (!a || !/INPUT|TEXTAREA/.test(a.tagName)) render() } })
             }
             render()
         }
-        function render() { view.t === 'login' ? login() : view.t === 'm' ? master() : sheet(view.id) }
+        function render() { nav(); view.t === 'login' ? login() : view.t === 'm' ? master() : view.t === 'faq' ? faq() : sheet(view.id) }
+        function nav() { $('#nav').innerHTML = `<button class="${view.t !== 'faq' ? 'act' : ''}" id="nm">🎬 Mesa</button><button class="${view.t === 'faq' ? 'act' : ''}" id="nf">❓ Perguntas frequentes</button>`; $('#nm').onclick = () => { if (view.t === 'faq') open(last || { t: 'login' }) }; $('#nf').onclick = () => { if (view.t !== 'faq') { last = view; open({ t: 'faq' }) } } }
         function sum(s) { return s.mk.filter(m => m.t === 'Ferida').reduce((a, m) => a + m.v, 0) }
         function master() {
-            $('#app').innerHTML = `<div class="row"><h2 class="sp">Mesa do Mestre — resumo</h2><button id="out">Sair</button></div><div class="grid">${C.map(c => {
-                const s = st(c.id), f = sum(s); return `<div class="card mc" data-id="${c.id}"><b>${E(c.n)}</b> <span class="${s.st}">● ${s.st}</span>${s.km ? ' <span class="warn">🔪 ASSASSINO</span>' : ''}${s.give ? ` <span class="tag">entregar ${s.give} dados</span>` : ''}${s.cl ? ` <span class="tag">clamores ${s.cl}</span>` : ''}<div class="dim">${E(c.c)} · ${E(c.p)}</div>
+            const M = S._m || (S._m = { qs: [] }); $('#app').innerHTML = `<div class="row"><h2 class="sp">Mesa do Mestre — resumo</h2><button id="out">Sair</button></div><div class="grid">${C.map(c => {
+                const s = st(c.id), f = sum(s); return `<div class="card mc" data-id="${c.id}"><div class="row"><div class="av sm2">${s.pic ? `<img src="${s.pic}">` : E(c.n[0])}</div><b>${E(c.n)}</b></div> <span class="${s.st}">● ${s.st}</span>${s.km ? ' <span class="warn">🔪 ASSASSINO</span>' : ''}${s.give ? ` <span class="tag">entregar ${s.give} dados</span>` : ''}${s.cl ? ` <span class="tag">clamores ${s.cl}</span>` : ''}<div class="dim">${E(c.c)} · ${E(c.p)}</div>
 ${s.km && s.k ? `<div>Dados <b>${s.k.dice}</b> · PH <b>${s.k.ph}</b> · Sustos <b>${s.k.su}</b></div>` : `<div>🎲 <b>${s.dice}</b> · 🩸 Feridas <b class="${f >= 6 ? 'warn' : ''}">${f}</b> · 🏃 Fuga <b>${s.fuga}</b> · ⚡ PT <b>${s.ten}</b></div>`}
 <div>${s.mk.map(m => `<span class="tag">${E(m.t)} ${m.v}</span>`).join('') || '<span class="dim">sem marcadores</span>'}</div>
-<div class="dim">Comprados: ${s.buy.map(b => E(b.n)).join(', ') || '—'}</div></div>`
-            }).join('')}</div><p class="dim">Clique em um card para abrir a ficha completa.</p>`;
+<div class="dim">Comprados: ${s.buy.map(b => E(b.n)).join(', ') || '—'}</div>${s.qs && s.qs.length ? `<div>${s.qs.map(q => `<span class="tag">🏛 ${E(q.n)}</span>`).join('')}</div>` : ''}</div>`
+            }).join('')}</div><p class="dim">Clique em um card para abrir a ficha completa.</p>
+<div class="card"><h2>Clamores da Diretora ${hp('mcl')}</h2>${hbox('mcl')}${M.qs.map((q, i) => `<div class="mk"><span><b>${E(q.n)}</b> <span class="tag">${E(q.t)}</span><br><span class="dim">${E(q.e)}</span></span><button class="sm" data-mq="${i}">✕</button></div>`).join('') || '<p class="dim">Nenhum clamor ainda.</p>'}<div class="row" style="margin-top:10px"><select id="mqs" style="flex:1"><optgroup label="Desfavoráveis">${QUAL.des.map(q => `<option value="des|${E(q[0])}">${E(q[0])}</option>`).join('')}</optgroup><optgroup label="Neutras">${QUAL.neu.map(q => `<option value="neu|${E(q[0])}">${E(q[0])}</option>`).join('')}</optgroup></select><button id="mqa">+ Adicionar</button></div></div>
+<div class="card"><h2>Clamores dos jogadores</h2>${C.map(c => st(c.id)).map((s, i) => s.qs.length ? `<p><b>${E(C[i].n)}</b>: ${s.qs.map(q => E(q.n)).join(', ')}</p>` : '').join('') || '<p class="dim">Nenhum ainda.</p>'}</div>`;
+            const addm = $('#mqa'); addm.onclick = () => { const [t, n] = $('#mqs').value.split('|'), q = QUAL[t].find(x => x[0] === n); M.qs.push({ n, t: t === 'des' ? 'Desfavorável' : 'Neutra', e: q[1] }); save('_m'); render() }; document.querySelectorAll('[data-mq]').forEach(b => b.onclick = () => { M.qs.splice(+b.dataset.mq, 1); save('_m'); render() }); hbind();
             $('#out').onclick = () => open({ t: 'login' }); document.querySelectorAll('.mc').forEach(e => e.onclick = () => open({ t: 's', id: e.dataset.id, m: true }))
         }
         function cnt(l, k, v, max) { return `<div class="cnt"><span>${l}</span><button class="sm" data-a="dec" data-k="${k}">−</button><b>${v}</b><button class="sm" data-a="inc" data-k="${k}" data-max="${max || 99}">+</button></div>` }
+        const hp = k => `<button class="hb" data-h="${k}" title="Como usar">?</button>`, hbox = k => view.h && view.h[k] ? `<div class="helpbox">${HELP[k]}</div>` : '';
+        function pips(k, n, v, cls) { return `<div class="pips">${Array.from({ length: n }, (_, i) => `<button class="pip ${i < v ? 'on ' + cls : ''}" data-p="${k}" data-i="${i + 1}" aria-label="${k} ${i + 1}"></button>`).join('')}</div>` }
+        function stepper(l, k, v, max, cls) { return `<div class="trk"><div class="trh"><span>${l}</span><div class="stp"><button class="sm" data-a="dec" data-k="${k}">−</button><b>${v}</b><button class="sm" data-a="inc" data-k="${k}" data-max="${max}">+</button></div></div>${pips(k, max, v, cls)}</div>` }
         function sheet(id) {
-            const c = C.find(x => x.id === id), s = st(id); if (s.km && s.k) return killer(c, s); const f = sum(s), seq = s.mk.filter(m => m.t === 'Sequela').length;
-            $('#app').innerHTML = `<div class="row"><button id="back">${view.m ? '← Mestre' : 'Sair'}</button><span class="sp"></span>${c.k && !s.km ? '<button class="b" id="mask">🎭 Tirar a Máscara</button>' : ''}</div>
-${c.k && !s.km ? `<div class="card" style="border-color:var(--rd)"><h2>🎭 O Vulto Entre Nós (secreto)</h2><p class="dim">Você é o Assassino disfarçado. Combine com a Diretora sinais para comunicar as ações do Assassino. Seus dados sacrificados ainda vão para a Diretora.</p><ul class="dim"><li>Manipule seus dados marcadores livremente quando ninguém estiver olhando.</li><li>Pode ignorar armadilhas em Cenas de Suspense.</li><li>Pode mentir sobre ter ou não uma especialidade.</li><li>Seu Choque de Realidade custa 5 PT.</li></ul><div class="row"><button id="arq" ${s.k.dice < 2 ? 'disabled' : ''}>Tudo arquitetado: −2 dados do Assassino → +1 clamor da Diretora</button><b>Clamores: ${s.cl || 0}</b></div>${view.cf ? `<div class="card" style="margin-top:10px"><p><b>Tirar a Máscara?</b> Você vira o Assassino e perde as habilidades de sobrevivente. Seus ${s.dice} dados vão para os outros Intérpretes, e seus Pontos de Tensão (${s.ten}) viram Pontos de Horror.</p><button class="b" id="mkok">Confirmar</button> <button id="mkno">Cancelar</button></div>` : ''}</div>` : ''}<div class="card"><h1 style="font-size:2rem">${E(c.n)}</h1><div class="dim">${E(c.c)} · ${E(c.a)} anos · ${E(c.pr)} · jogador(a): ${E(c.p)}</div><div class="dim">Fantasia: ${E(c.f)}</div>
-<div>${c.sp.map(x => `<span class="tag">${x}</span>`).join('')}</div>
-<div class="row" style="margin-top:6px">Status: ${['vivo', 'ferido', 'morto'].map(x => `<button class="sm ${s.st === x ? x : ''}" data-a="st" data-v="${x}">${x}</button>`).join('')}</div></div>
-<div class="card"><h2>Marcadores e dados</h2>${cnt('🎲 Dados comuns', 'dice', s.dice, 6)}${cnt('🏃 Dados de Fuga', 'fuga', s.fuga, 6)}${cnt('⚡ Pontos de Tensão', 'ten', s.ten, 10)}
-<div class="cnt"><span>🩸 Feridas (soma)</span><b class="${f >= 6 ? 'warn' : ''}">${f}</b>${f >= 6 ? '<span class="warn">MORTE!</span>' : ''}<span>Sequelas: ${seq}</span></div>
-${s.mk.map((m, i) => `<div class="mk"><span>🎲 ${E(m.t)}</span><button class="sm" data-a="mv" data-i="${i}" data-d="-1">−</button><b>${m.v}</b><button class="sm" data-a="mv" data-i="${i}" data-d="1">+</button><button class="sm" data-a="mr" data-i="${i}">✕</button></div>`).join('')}
-<div class="row"><select id="mt" style="width:auto">${['Ferida', 'Sequela', 'Infecção', 'Possessão', 'Restrição', 'Outro'].map(x => `<option>${x}</option>`).join('')}</select><button data-a="ma">+ Dado marcador</button></div></div>
-<div class="card"><h2>Rolagem de dados</h2><div class="row"><span>Dados:</span><input type="number" id="rn" min="1" max="12" value="${Math.max(1, Math.min(s.dice, 6))}" style="width:70px"><select id="rr" style="width:auto"><option value="1">Risco Comum (1 sucesso)</option><option value="2">Risco Complexo (2)</option></select><label class="dim"><input type="checkbox" id="rs"> Com especialidade (dificuldade 3)</label><button class="b" data-a="roll">Rolar</button></div><div id="rres">${rollHTML()}</div></div>
-<div class="card"><h2>Vantagens (Pontos de Tensão)</h2>${VANT.filter(v => !v[2] || c.sp.includes(v[2])).map((v, i) => `<div class="mk"><span><b>${v[0]}</b> <span class="dim">${v[1] === 'var' ? 'custo livre' : v[1] + ' PT'} — ${v[3]}</span></span>${v[1] === 'var' ? '<input type="number" class="vc" min="1" value="1" style="width:60px">' : ''}<button class="sm" data-a="buy" data-i="${VANT.indexOf(v)}" ${v[1] !== 'var' && s.ten < (v[0] === 'Choque de Realidade' && c.k && !s.km ? 5 : v[1]) ? 'disabled' : ''}>Comprar</button></div>`).join('')}
-<div class="row" style="margin-top:8px"><input type="text" id="cn" placeholder="Outro item/benefício comprado" style="flex:2"><input type="number" id="cc" placeholder="PT" min="0" style="width:70px"><button data-a="cbuy">Comprar</button></div>
-<h3 style="margin-top:12px">Comprados</h3>${s.buy.map((b, i) => `<div class="mk"><span>✔ ${E(b.n)} <span class="dim">(${b.c} PT)</span></span><button class="sm" data-a="bu" data-i="${i}">usado ✕</button></div>`).join('') || '<span class="dim">Nada ainda.</span>'}</div>
-<div class="card"><h2>Inventário</h2>${s.inv.map((x, i) => `<div class="mk"><span>• ${E(x)}</span><button class="sm" data-a="ir" data-i="${i}">✕</button></div>`).join('')}<div class="row"><input type="text" id="ni" placeholder="Novo item" style="flex:1"><button data-a="ia">Adicionar</button></div>
-<h3 style="margin-top:12px">Anotações</h3><textarea id="nt">${E(s.nt)}</textarea></div>
-<div class="card"><h2>Habilidade</h2><b>${E(c.ab[0])}</b><div class="dim">${E(c.ab[1])}</div></div>
-<div class="card"><details><summary>Quem é você · segredos · psicológico</summary><p><b>História:</b> ${E(c.bs)}</p><p><b>Segredo:</b> ${E(c.sec)}</p><p><b>Motivo para matar:</b> ${E(c.mt)}</p><p><b>Apegos:</b> ${c.ap.map(E).join(' · ')}</p><p><b>Maior medo:</b> ${E(c.fear)}</p>${c.q ? `<p><i>“${E(c.q)}”</i></p>` : ''}
-<p class="dim">Apegos em cena rendem PT: item icônico +1, relação afetiva +2, desejo obscuro +3.</p></details></div>`;
+            const c = C.find(x => x.id === id), s = st(id); if (s.km && s.k) return killer(c, s); const f = sum(s), seq = s.mk.filter(m => m.t === 'Sequela').length, T = view.tab || 'st', ini = c.n.split(' ').map(x => x[0]).slice(0, 2).join('');
+            const tabs = [['st', '🩸 Status'], ['ro', '🎲 Dados'], ['va', '⚡ Vantagens'], ['it', '🎒 Itens'], ['cl', '🏛 Clamores'], ['pe', '📖 Personagem']];
+            let body = '';
+            if (T === 'st') body = `${c.k ? `<div class="card vulto"><h2>🎭 O Vulto Entre Nós <span class="tag">secreto</span> ${hp('vul')}</h2>${hbox('vul')}<p class="dim">Você é o Assassino disfarçado. Combine sinais com a Diretora. Seus dados sacrificados ainda vão para ela.</p><ul class="dim"><li>Manipule seus dados marcadores quando ninguém olhar.</li><li>Ignore armadilhas em Cenas de Suspense.</li><li>Pode mentir sobre suas especialidades.</li><li>Seu Choque de Realidade custa 5 PT.</li></ul><div class="row"><button id="arq" ${s.k.dice < 2 ? 'disabled' : ''}>Tudo arquitetado (−2 dados → +1 clamor)</button><b>Clamores: ${s.cl || 0}</b></div><div class="row" style="margin-top:10px"><button class="b" id="mask">🎭 Tirar a Máscara</button></div>${view.cf ? `<div class="alert"><p><b>Tirar a Máscara?</b> Você vira o Assassino. Seus ${s.dice} dados vão para os outros Intérpretes e seus ${s.ten} PT viram PH.</p><button class="b" id="mkok">Confirmar</button> <button id="mkno">Cancelar</button></div>` : ''}</div>` : ''}
+<div class="card"><h2>Pilhas e marcadores ${hp('pil')}</h2>${hbox('pil')}${stepper('🎲 Dados comuns', 'dice', s.dice, 6, 'dice')}${stepper('🏃 Dados de Fuga', 'fuga', s.fuga, 6, 'fuga')}${stepper('⚡ Pontos de Tensão', 'ten', s.ten, 10, 'ten')}
+<div class="trk"><div class="trh"><span>🩸 Feridas (soma dos dados)</span><b class="${f >= 6 ? 'warn' : ''}">${f}/7 ${f >= 6 ? '· MORTE!' : ''}</b></div><div class="pips">${Array.from({ length: 7 }, (_, i) => `<span class="pip ro ${i < f ? 'on wound' : ''}"></span>`).join('')}</div><div class="dim">Sequelas: ${seq}</div></div></div>
+<div class="card"><h2>Dados marcadores ${hp('mar')}</h2>${hbox('mar')}${s.mk.map((m, i) => `<div class="mk"><span>🎲 ${E(m.t)}</span><button class="sm" data-a="mv" data-i="${i}" data-d="-1">−</button><b class="mval">${m.v}</b><button class="sm" data-a="mv" data-i="${i}" data-d="1">+</button><button class="sm" data-a="mr" data-i="${i}">✕</button></div>`).join('') || '<p class="dim">Nenhum marcador.</p>'}
+<div class="row"><select id="mt" style="width:auto">${['Ferida', 'Sequela', 'Infecção', 'Possessão', 'Restrição', 'Outro'].map(x => `<option>${x}</option>`).join('')}</select><button data-a="ma">+ Adicionar</button></div></div>
+<div class="card"><h2>Habilidades ${hp('hab')}</h2>${hbox('hab')}${s.ab.map((a, i) => `<div class="ab ${a.u ? 'used' : ''}"><div class="row"><b class="sp">${E(a.n)}</b><button class="sm" data-a="abu" data-i="${i}">${a.u ? '↺ Recarregar' : '✔ Marcar usada'}</button><button class="sm" data-a="abr" data-i="${i}">✕</button></div><div class="dim">${E(a.d)}</div></div>`).join('') || '<p class="dim">Nenhuma.</p>'}<div class="row" style="margin-top:8px"><input type="text" id="an" placeholder="Nova habilidade / cicatriz" style="flex:1"><input type="text" id="ad" placeholder="Efeito" style="flex:2"><button data-a="aba">+</button></div><button class="sm" data-a="abreset" style="margin-top:6px">↺ Recarregar todas (novo Encontro)</button></div>
+<div class="card"><h2>Estado ${hp('est')}</h2>${hbox('est')}<div class="row">${[['vivo', 'Vivo'], ['ferido', 'Ferido'], ['morto', 'Morto']].map(x => `<button class="${s.st === x[0] ? 'act ' + x[0] : ''}" data-a="st" data-v="${x[0]}">◉ ${x[1]}</button>`).join('')}</div></div>`;
+            else if (T === 'ro') body = `<div class="card"><h2>Rolagem de dados ${hp('rol')}</h2>${hbox('rol')}<p class="dim">Sucesso: 4, 5 ou 6 (3+ com especialidade). Risco Comum = 1 sucesso, Complexo = 2.</p>
+<div class="row"><span>Dados</span><button class="sm" data-a="rn" data-d="-1">−</button><b class="mval">${view.rn || Math.max(1, Math.min(s.dice, 6))}</b><button class="sm" data-a="rn" data-d="1">+</button><span class="sp"></span><span class="dim">Pilha: ${s.dice}</span></div>
+<div class="row" style="margin-top:8px"><select id="rr" style="width:auto"><option value="1" ${view.rr !== '2' ? 'selected' : ''}>Risco Comum</option><option value="2" ${view.rr === '2' ? 'selected' : ''}>Risco Complexo</option></select><label class="dim"><input type="checkbox" id="rs" ${view.rs ? 'checked' : ''}> Especialidade</label></div>
+<div class="row" style="margin-top:10px"><button class="b" data-a="roll">🎲 Rolar</button><button data-a="susto">😱 Teste de Susto (1 dado)</button></div><div id="rres">${rollHTML()}</div></div>`;
+            else if (T === 'va') body = `<div class="card"><h2>Vantagens <span class="tag">${s.ten} PT disponíveis</span> ${hp('van')}</h2>${hbox('van')}${VANT.filter(v => !v[2] || c.sp.includes(v[2])).map(v => `<div class="mk"><span><b>${v[0]}</b> <span class="tag">${v[1] === 'var' ? 'livre' : (v[0] === 'Choque de Realidade' && c.k ? 5 : v[1]) + ' PT'}</span><br><span class="dim">${v[3]}</span></span>${v[1] === 'var' ? '<input type="number" class="vc" min="1" value="1" style="width:60px">' : ''}<button class="sm" data-a="buy" data-i="${VANT.indexOf(v)}" ${v[1] !== 'var' && s.ten < (v[0] === 'Choque de Realidade' && c.k ? 5 : v[1]) ? 'disabled' : ''}>Comprar</button></div>`).join('')}
+<div class="row" style="margin-top:10px"><input type="text" id="cn" placeholder="Outro item/benefício comprado" style="flex:2"><input type="number" id="cc" placeholder="PT" min="0" style="width:70px"><button data-a="cbuy">Comprar</button></div></div>
+<div class="card"><h2>Comprados ${hp('com')}</h2>${hbox('com')}${s.buy.map((b, i) => `<div class="mk"><span>✔ ${E(b.n)} <span class="dim">(${b.c} PT)</span></span><button class="sm" data-a="bu" data-i="${i}">usado ✕</button></div>`).join('') || '<p class="dim">Nada ainda.</p>'}</div>`;
+            else if (T === 'cl') body = `<div class="card"><h2>Clamores escolhidos ${hp('cla')}</h2>${hbox('cla')}${s.qs.map((q, i) => `<div class="mk"><span><b>${E(q.n)}</b> <span class="tag">${E(q.t)}</span><br><span class="dim">${E(q.e)}</span></span><button class="sm" data-a="qr" data-i="${i}">✕</button></div>`).join('') || '<p class="dim">Nenhum clamor ainda. Escolha após o Rito de Iniciação.</p>'}
+<div class="row" style="margin-top:10px"><select id="qsel" style="flex:1"><optgroup label="Favoráveis">${QUAL.fav.map(q => `<option value="fav|${E(q[0])}">${E(q[0])}</option>`).join('')}</optgroup><optgroup label="Neutras">${QUAL.neu.map(q => `<option value="neu|${E(q[0])}">${E(q[0])}</option>`).join('')}</optgroup></select><button data-a="qa">+ Adicionar</button></div><div class="row" style="margin-top:8px"><input type="text" id="qn" placeholder="Clamor personalizado" style="flex:1"><input type="text" id="qe" placeholder="Efeito" style="flex:2"><button data-a="qc">+</button></div></div>
+<div class="card"><h2>Lista de qualidades</h2>${[['Favoráveis', 'fav'], ['Neutras', 'neu']].map(g => `<details><summary>${g[0]}</summary>${QUAL[g[1]].map(q => `<p><b>${E(q[0])}</b><br><span class="dim">${E(q[1])}</span></p>`).join('')}</details>`).join('')}</div>`;
+            else if (T === 'it') body = `<div class="card"><h2>Inventário ${hp('inv')}</h2>${hbox('inv')}${s.inv.map((x, i) => `<div class="mk"><span>• ${E(x)}</span><button class="sm" data-a="ir" data-i="${i}">✕</button></div>`).join('') || '<p class="dim">Vazio.</p>'}<div class="row"><input type="text" id="ni" placeholder="Novo item" style="flex:1"><button data-a="ia">Adicionar</button></div></div><div class="card"><h2>Anotações ${hp('nt')}</h2>${hbox('nt')}<textarea id="nt" placeholder="Pistas, suspeitas, lembretes…">${E(s.nt)}</textarea></div>`;
+            else body = `<div class="card"><h2>Foto e especialidades ${hp('foto')}</h2>${hbox('foto')}<div class="row"><div class="av big" data-pick="1">${s.pic ? `<img src="${s.pic}">` : E(ini)}</div><button data-pick="1">📷 Trocar foto</button>${s.pic ? '<button data-a="pr">Remover</button>' : ''}</div><p>${c.sp.map(x => `<span class="tag">${x}</span>`).join('')}</p></div>
+<div class="card"><h2>Quem é você</h2><p><b>História:</b> ${E(c.bs)}</p><p><b>Maior medo:</b> ${E(c.fear)}</p>${c.q ? `<p><i>“${E(c.q)}”</i></p>` : ''}</div>
+<div class="card"><h2>Segredos</h2><p><b>Segredo:</b> ${E(c.sec)}</p><p><b>Motivo para matar:</b> ${E(c.mt)}</p><p><b>Apegos:</b><br>🔸 Item icônico (+1 PT): ${E(c.ap[0])}<br>🔸 Relação afetiva (+2 PT): ${E(c.ap[1])}<br>🔸 Desejo obscuro (+3 PT): ${E(c.ap[2])}</p></div>`;
+            $('#app').innerHTML = `<div class="row"><button id="back">${view.m ? '← Mestre' : 'Sair'}</button><span class="sp"></span><span class="dim">💾 salvo neste aparelho</span></div>
+<div class="hud"><div class="row"><div class="av" data-pick="1">${s.pic ? `<img src="${s.pic}">` : E(ini)}</div><input type="file" id="pf" accept="image/*" hidden><div class="sp"><b class="nm">${E(c.n)}</b><div class="dim">${E(c.c)} · ${E(c.a)} anos · ${E(c.pr)} · ${E(c.p)}</div></div><span class="${s.st}">● ${s.st}</span></div>
+<div class="st4"><div><small>DADOS</small><b>${s.dice}</b></div><div><small>FERIDAS</small><b class="${f >= 6 ? 'warn' : ''}">${f}</b></div><div><small>FUGA</small><b>${s.fuga}</b></div><div><small>TENSÃO</small><b>${s.ten}</b></div></div></div>
+<div class="tabs">${tabs.map(t => `<button class="${t[0] === T ? 'act' : ''}" data-t="${t[0]}">${t[1]}</button>`).join('')}</div>${body}`;
             bind(id, c, s)
         }
-        function rollHTML() { if (!lastRoll) return '<p class="dim">Nenhuma rolagem ainda.</p>'; const r = lastRoll; return r.d.map(v => `<span class="die ${v >= r.t ? 's' : 'f'}">${v}</span>`).join('') + `<p><b>${r.s}</b> sucesso(s) · ${r.f} falha(s) — precisa de ${r.n}: <b class="${r.s >= r.n ? 'vivo' : 'warn'}">${r.s >= r.n ? 'SUPEROU' : 'FRACASSOU'}</b></p>${r.f && !r.ap ? `<button data-a="loss">Descontar ${r.f} falha(s) dos dados comuns</button>` : ''}` }
+        function rollHTML() { if (!lastRoll) return '<p class="dim">Nenhuma rolagem ainda.</p>'; const r = lastRoll; return `<div class="dice">${r.d.map(v => `<span class="die ${v >= r.t ? 's' : 'f'}">${v}</span>`).join('')}</div><p><b>${r.s}</b> sucesso(s) · ${r.f} falha(s) — precisa de ${r.n}: <b class="${r.s >= r.n ? 'vivo' : 'warn'}">${r.s >= r.n ? 'SUPEROU' : 'FRACASSOU'}</b></p>${r.f && !r.ap ? `<button data-a="loss">Descontar ${r.f} falha(s) dos dados comuns</button>` : ''}` }
+        function hbind() { document.querySelectorAll('[data-h]').forEach(b => b.onclick = () => { view.h = view.h || {}; view.h[b.dataset.h] = !view.h[b.dataset.h]; render() }) }
         function bind(id, c, s) {
             const sv = () => { save(id); render() };
-            $('#back').onclick = () => open({ t: view.m ? 'm' : 'login' }); const mk = $('#mask'); if (mk) mk.onclick = () => { view.cf = true; render() }; const no = $('#mkno'); if (no) no.onclick = () => { view.cf = false; render() }; const ok = $('#mkok'); if (ok) ok.onclick = () => { view.cf = false; s.km = true; s.k.ph += s.ten; s.ten = 0; s.give = s.dice; s.dice = 0; sv() }; const ar = $('#arq'); if (ar) ar.onclick = () => { if (s.k.dice >= 2) { s.k.dice -= 2; s.cl = (s.cl || 0) + 1; sv() } };
+            $('#back').onclick = () => open({ t: view.m ? 'm' : 'login' });
+            document.querySelectorAll('[data-t]').forEach(b => b.onclick = () => { view.tab = b.dataset.t; render() }); hbind(); const pf = $('#pf'); document.querySelectorAll('[data-pick]').forEach(b => b.onclick = () => pf.click()); pf.onchange = () => { const f = pf.files[0]; if (!f) return; const im = new Image(); im.onload = () => { const z = 192, cv = document.createElement('canvas'); cv.width = cv.height = z; const m = Math.min(im.width, im.height), x = cv.getContext('2d'); x.drawImage(im, (im.width - m) / 2, (im.height - m) / 2, m, m, 0, 0, z, z); s.pic = cv.toDataURL('image/jpeg', .8); URL.revokeObjectURL(im.src); sv() }; im.src = URL.createObjectURL(f) };
+            const mk = $('#mask'); if (mk) mk.onclick = () => { view.cf = true; render() }; const no = $('#mkno'); if (no) no.onclick = () => { view.cf = false; render() }; const ok = $('#mkok'); if (ok) ok.onclick = () => { view.cf = false; s.km = true; s.k.ph += s.ten; s.ten = 0; s.give = s.dice; s.dice = 0; sv() }; const ar = $('#arq'); if (ar) ar.onclick = () => { if (s.k.dice >= 2) { s.k.dice -= 2; s.cl = (s.cl || 0) + 1; sv() } };
+            document.querySelectorAll('[data-p]').forEach(b => b.onclick = () => { const k = b.dataset.p, n = +b.dataset.i; s[k] = s[k] === n ? n - 1 : n; sv() });
+            const roll = (n, t, need) => { const d = Array.from({ length: n }, () => 1 + Math.floor(Math.random() * 6)), sc = d.filter(v => v >= t).length; lastRoll = { d, t, n: need, s: sc, f: n - sc, ap: false }; render() };
             document.querySelectorAll('[data-a]').forEach(b => b.onclick = () => {
                 const a = b.dataset.a, i = +b.dataset.i, k = b.dataset.k;
                 if (a === 'inc') s[k] = Math.min(+b.dataset.max, s[k] + 1); else if (a === 'dec') s[k] = Math.max(0, s[k] - 1); else if (a === 'st') s.st = b.dataset.v;
                 else if (a === 'ma') s.mk.push({ t: $('#mt').value, v: 1 }); else if (a === 'mv') s.mk[i].v = Math.max(1, Math.min(6, s.mk[i].v + +b.dataset.d)); else if (a === 'mr') s.mk.splice(i, 1);
-                else if (a === 'roll') { const n = +$('#rn').value || 1, t = $('#rs').checked ? 3 : 4, d = Array.from({ length: n }, () => 1 + Math.floor(Math.random() * 6)), sc = d.filter(v => v >= t).length; lastRoll = { d, t, n: +$('#rr').value, s: sc, f: n - sc, ap: false }; return render() }
+                else if (a === 'rn') { view.rn = Math.max(1, Math.min(12, (view.rn || Math.max(1, Math.min(s.dice, 6))) + +b.dataset.d)); return render() }
+                else if (a === 'roll') { view.rr = $('#rr').value; view.rs = $('#rs').checked; return roll(view.rn || Math.max(1, Math.min(s.dice, 6)), view.rs ? 3 : 4, +view.rr) }
+                else if (a === 'susto') return roll(1, view.rs ? 3 : 4, 1);
+                else if (a === 'abu') s.ab[i].u = !s.ab[i].u; else if (a === 'abr') s.ab.splice(i, 1); else if (a === 'abreset') s.ab.forEach(x => x.u = false); else if (a === 'aba') { const n = $('#an').value.trim(); if (n) s.ab.push({ n, d: $('#ad').value.trim(), u: false }) }
+                else if (a === 'pr') s.pic = ''; else if (a === 'qr') s.qs.splice(i, 1); else if (a === 'qa') { const [t, n] = $('#qsel').value.split('|'), q = QUAL[t].find(x => x[0] === n); s.qs.push({ n, t: t === 'fav' ? 'Favorável' : 'Neutra', e: q[1] }) } else if (a === 'qc') { const n = $('#qn').value.trim(); if (n) s.qs.push({ n, t: 'Personalizado', e: $('#qe').value.trim() }) }
                 else if (a === 'loss') { s.dice = Math.max(0, s.dice - lastRoll.f); lastRoll.ap = true }
                 else if (a === 'buy') {
-                    const v = VANT[i]; let cost = v[1]; if (cost === 'var') { cost = Math.min(s.ten, +b.parentNode.querySelector('.vc').value || 0); if (cost <= 0) return } if (v[0] === 'Choque de Realidade' && c.k && !s.km) cost = 5; if (s.ten < cost) return; s.ten -= cost; if (v[0] === 'Choque de Realidade') s.dice = Math.min(6, s.dice + 1);
+                    const v = VANT[i]; let cost = v[1]; if (cost === 'var') { cost = Math.min(s.ten, +b.parentNode.querySelector('.vc').value || 0); if (cost <= 0) return } if (v[0] === 'Choque de Realidade' && c.k) cost = 5; if (s.ten < cost) return; s.ten -= cost; if (v[0] === 'Choque de Realidade') s.dice = Math.min(6, s.dice + 1);
                     if (v[0] === 'Cuidar de Feridas') { let r = cost; s.mk.filter(m => m.t === 'Ferida').forEach(m => { const x = Math.min(m.v, r); m.v -= x; r -= x }); s.mk = s.mk.filter(m => m.t !== 'Ferida' || m.v > 0) } else s.buy.push({ n: v[0], c: cost })
                 }
                 else if (a === 'cbuy') { const n = $('#cn').value.trim(), cc = +$('#cc').value || 0; if (!n || cc > s.ten) return; s.ten -= cc; s.buy.push({ n, c: cc }) }
                 else if (a === 'bu') s.buy.splice(i, 1); else if (a === 'ir') s.inv.splice(i, 1); else if (a === 'ia') { const v = $('#ni').value.trim(); if (v) s.inv.push(v) }
                 sv()
             });
-            const nt = $('#nt'); nt.oninput = () => { s.nt = nt.value; save(id) }
+            const nt = $('#nt'); if (nt) nt.oninput = () => { s.nt = nt.value; save(id) }
+        }
+        function faq() {
+            const Q = [['Como eu entro na minha ficha?', 'Na aba Mesa, escolha seu personagem e digite a senha combinada com o mestre. O mestre entra escolhendo "Mestre".'], ['Minhas alterações ficam salvas?', 'Sim. Tudo é salvo automaticamente neste aparelho (localStorage) e, quando a mesa está conectada, também fica visível para o mestre. Se trocar de aparelho ou limpar os dados do navegador, use a versão sincronizada.'], ['Como funciona um teste?', 'Você anuncia quantos dados da pilha vai arriscar e rola todos. Sucesso é 4, 5 ou 6 (3 ou mais se o teste usa sua especialidade). Risco Comum precisa de 1 sucesso; Complexo, de 2.'], ['O que acontece com os dados que falham?', 'Em Cenas Livres e de Suspense, são sacrificados e vão para a pilha da Diretora. Em Encontros e Testes de Susto, são descartados. Use "Descontar falhas" para tirá-los da sua pilha.'], ['Quantos dados eu tenho?', 'Todos começam com 6 dados e nunca passam disso.'], ['O que são dados marcadores?', 'Representam condições que evoluem: Feridas (somam; ao chegar em 6 a personagem morre), Sequelas, Infecção, Possessão e Restrição. Não entram em testes.'], ['Como ganho e gasto Pontos de Tensão?', 'Ganha com riscos clichês de filme de terror, boas interpretações e usando seus Apegos (item +1, relação +2, desejo obscuro +3). Gasta na aba Vantagens (máximo 10).'], ['O que são as Etapas de Fuga?', 'Para escapar de um Encontro você precisa acumular Dados de Fuga igual às Etapas de Fuga definidas pela Diretora. Vazar Dali converte sucessos de Agilidade em Dados de Fuga.'], ['Para que serve o Teste de Susto?', 'Quando algo assusta o grupo você rola 1 dado como Risco Comum. Se falhar, o dado é descartado.'], ['O que é "Tirar a Máscara"?', 'Só aparece para quem é Vulto (Charlotte e Vivian). Revela a pessoa como Assassino: seus PT viram PH e seus dados vão para os outros jogadores. Não dá para fazer isso por engano: há uma confirmação.'], ['Esqueci minha senha.', 'Peça ao mestre. A senha do mestre é só dele.'], ['O mestre vê minha ficha?', 'Sim: o mestre vê um resumo de todos (dados, feridas, fuga, tensão, itens comprados) e pode abrir cada ficha.']];
+            $('#app').innerHTML = `<div class="card"><h2>Perguntas frequentes</h2>${Q.map(q => `<details class="fq"><summary>${q[0]}</summary><p class="dim">${q[1]}</p></details>`).join('')}</div>`
         }
         function killer(c, s) {
             const k = s.k, K = c.k; k.th = k.th || K.th; k.th2 = k.th2 || ''; k.n1 = k.n1 ?? K.nb; k.n2 = k.n2 ?? 0; k.ua = k.ua || []; const mx = Math.max(k.n1, k.n2), T = TH[k.th], T2 = k.th2 && TH[k.th2];
